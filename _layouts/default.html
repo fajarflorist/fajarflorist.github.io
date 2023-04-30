@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: 'id-ID' }}">
+<head>
+	{% if page.title -%}
+	<title>{{ page.title }} - {{ site.title }}</title>
+	{%- else %}
+	<title>{{ site.title }}</title>
+	{%- endif %}
+
+	{% include meta.html %}
+
+	<!-- Preload -->
+	<link rel="preload" as="style" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/main.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/main.js' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	{%- if page.layout == 'product' %}
+	<link rel="preload" as="style" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/jquery.min.js' | relative_url }}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/splide.min.js' | relative_url }}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/zoom.min.js' | relative_url }}" />
+	{%- endif %}
+
+	<!-- Main -->
+	{%- if page.layout == 'product' %}
+	<link rel="stylesheet" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
+	{%- endif %}
+	<link rel="stylesheet" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+
+	<!-- Development -->
+	<link rel="stylesheet" href="{{ 'tailwind.css' | relative_url }}" />
+</head>
+<body class="max-lg:fixed max-lg:w-screen max-lg:h-screen max-lg:overflow-hidden">
+	<div class="max-lg:h-screen max-lg:overflow-hidden">
+		<div class="h-screen max-lg:overflow-auto max-lg:pb-[6.7rem]" id="viewport">
+			<div class="flex flex-col items-center min-h-full max-lg:overflow-x-hidden [&_header]:w-full [&_main]:w-full [&_footer]:w-full [&_footer]:mt-auto">
+
+<header></header>
+
+<main>
+	{{ content }}
+</main>
+
+<slot>
+	{%- if page.layout == 'product' %}
+	<script src="{{ '/assets/js/jquery.min.js' | relative_url }}"></script>
+	<script src="{{ '/assets/js/splide.min.js' | relative_url }}"></script>
+	<script src="{{ '/assets/js/zoom.min.js' | relative_url }}"></script>
+	{%- endif %}
+	<script src="{{ '/assets/js/main.js' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
+
+	{%- include google_tag_manager.html %}
+</slot>
+
+			</div>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+---
+layout: default
+---
+
+<article class="my-6">
+	<h1>{{ page.title }}</h1>
+
+	<blockquote>{{ page.summary }}</blockquote>
+
+	<div>
+		<img src="{{ page.thumbnail }}" alt="{{ page.title }}" width="500" height="500" class="w-full" />
+	</div>
+
+	<p>{{ page.author }} - {{ page.category }}</p>
+
+	<p>{{ content }}</p>
+
+	<p><small>{{ page.date }}</small></p>
+</article>

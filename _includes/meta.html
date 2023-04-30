@@ -1,0 +1,72 @@
+<meta charset="utf-8" />
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, shrink-to-fit=no" />
+	<meta name="google" content="notranslate" />
+	<meta name="robots" content="index, follow" />
+
+	<meta name="keywords" content="{{ site.keywords }}" />
+	<meta name="author" content="{{ site.title }}" />
+	<meta property="og:site_name" content="{{ site.title }}" />
+	<meta name="twitter:site" content="{{ site.title }}" />
+
+	<meta property="og:type" content="website" />
+	<meta property="og:locale" content="{{ site.lang | default: 'id-ID' }}" />
+	<meta name="twitter:card" content="summary_large_image" />
+
+	{%- if page.thumbnail %}
+	{% capture ogp -%}
+		{%- if page.thumbnail contains 'http' -%}
+			{{ page.thumbnail }}
+		{%- else -%}
+			{{ site.url }}{{ page.thumbnail }}
+		{%- endif -%}
+	{%- endcapture -%}
+	<meta property="og:image" content="{{ ogp }}" />
+	<meta name="twitter:image" content="{{ ogp }}" />
+	{% else %}
+	<meta property="og:image" content="{{ site.url }}/assets/img/ogp.jpeg" />
+	<meta name="twitter:image" content="{{ site.url }}/assets/img/ogp.jpeg" />
+	{% endif %}
+
+	{%- if page.title %}
+	<meta name="title" content="{{ page.title }}" />
+	<meta property="og:title" content="{{ page.title }}" />
+	<meta name="twitter:title" content="{{ page.title }}" />
+	<meta name="apple-mobile-web-app-title" content="{{ page.title }}" />
+	{% else %}
+	<meta name="title" content="{{ site.title }}" />
+	<meta property="og:title" content="{{ site.title }}" />
+	<meta name="twitter:title" content="{{ site.title }}" />
+	<meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
+	{%- endif %}
+
+	{%- if page.description %}
+	<meta name="description" content="{{ page.description | strip_html }}" />
+	<meta property="og:description" content="{{ page.description | strip_html }}" />
+	<meta name="twitter:description" content="{{ page.description | strip_html }}" />
+	{% else %}
+	<meta name="description" content="{{ site.description }}" />
+	<meta property="og:description" content="{{ site.description }}" />
+	<meta name="twitter:description" content="{{ site.description }}" />
+	{%- endif %}
+
+	<!-- Canonical -->
+	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
+	<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ '/assets/img/favicon.ico' | absolute_url }}" />
+	<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon.png' | absolute_url }}" />
+	<link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png' | absolute_url }}" />
+	<meta name="msapplication-TileImage" content="{{ '/assets/img/favicon.png' | absolute_url }}" />
+
+	<!-- Status Bar -->
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+	<meta name="apple-mobile-web-app-status-bar" content="{{ site.tab_color | default: '#fff' }}" />
+	<meta name="msapplication-TileColor" content="{{ site.tab_color | default: '#fff' }}" />
+	<meta name="theme-color" content="{{ site.tab_color | default: '#fff' }}" />
+
+	<!-- System Theme -->
+	<meta name="color-scheme" content="dark light" />

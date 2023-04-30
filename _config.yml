@@ -1,0 +1,72 @@
+#----------------------------
+# Site Configs
+#----------------------------
+
+# Base hostname & protocol for your site, e.g. https://example.com or https://example.github.io
+url: 
+
+# Name of your site, e.g. ACME Corp.
+title: Corporate
+
+# Short bio or description, e.g. Professional architect for your house.
+description: Lorem ipsum qui elit in adipisicing in sint adipisicing commodo occaecat qui consectetur labore.
+
+# Keywords for search engine crawling & separate with comma, e.g. lorem, ipsum, dolor, commodo
+keywords: lorem, ipsum, et, dolor, commodo, incididunt, mollit
+
+# What collections do you want to show, value is true or false
+content_pages: false
+content_blogs: false
+content_products: true
+
+#----------------------------
+# Optional Configs
+#----------------------------
+
+# Subpath of your site, e.g. /blog
+baseurl: 
+
+# Specifies the language of website, e.g. en_US
+# Leave blank if you want to id_ID
+lang: 
+
+# Theme color for browser tab on mobile, e.g. #265FF3
+# Leave blank if you want to #fff
+tab_color: 
+
+# Step version of media assets with date (ISO 8601, UTC format) with quotes, e.g. "2023-12-31T23:59:59+07:00"
+version: 
+
+# Google Tag Manager web tracking code, e.g. G-TK69RB8KDF
+google_tag_manager: 
+
+#----------------------------
+# System Configs
+#----------------------------
+
+# Permanent links for posts and pages
+permalink: /:title/
+
+# Use the following plugins
+plugins:
+  - jekyll-postcss
+  - jekyll-sitemap
+
+# Set the Sass partials directory, as we're using @imports
+sass:
+  style: compressed # You might prefer to minify using compressed, or unminify using expanded
+
+# PostCSS plugin configurations
+postcss:
+  cache: false
+
+# Exclude these files from your production _site
+exclude:
+  - CNAME
+  - LICENSE
+  - README.md
+  - package.json
+  - package-lock.json
+  - postcss.config.js
+  - tailwind.config.js
+  - yarn.lock

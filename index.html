@@ -1,0 +1,57 @@
+---
+layout: default
+---
+
+{% if site.content_pages %}
+<section class="px-6 lg:px-10">
+	<h2>Semua Laman</h2>
+	<div class="bg-zinc-100 p-5 rounded-lg my-5">
+		{% for post in site.posts %}
+			{% if post.layout != 'page' %}
+				{% continue %}
+			{% endif %}
+
+			<article class="my-4 first:mt-0 last:mb-0">
+				<h3>{{ post.title }}</h3>
+				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+			</article>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}
+
+{% if site.content_blogs %}
+<section class="px-6 lg:px-10">
+	<h2>Semua Blog</h2>
+	<div class="bg-zinc-100 p-5 rounded-lg my-5">
+		{% for post in site.posts %}
+			{% if post.layout != 'blog' %}
+				{% continue %}
+			{% endif %}
+
+			<article class="my-4 first:mt-0 last:mb-0">
+				<h3>{{ post.title }}</h3>
+				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+			</article>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}
+
+{% if site.content_products %}
+<section class="px-6 lg:px-10">
+	<h2>Semua Produk</h2>
+	<div class="bg-zinc-100 p-5 rounded-lg my-5">
+		{% for post in site.posts %}
+			{% if post.layout != 'product' %}
+				{% continue %}
+			{% endif %}
+
+			<article class="my-4 first:mt-0 last:mb-0">
+				<h3>{{ post.title }}</h3>
+				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+			</article>
+		{% endfor %}
+	</div>
+</section>
+{% endif %}

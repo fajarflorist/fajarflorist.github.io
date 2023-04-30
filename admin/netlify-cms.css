@@ -1,0 +1,304 @@
+/*!
+ * Netlify CMS
+ * Mobile responsive original style by Si Nguyen [https://blog.singuyen.works/post/mobile-style-for-netlify-cms/]
+ * Modified by Degiam [https://degiam.github.io]
+ * Copyright (c) 2023
+ */
+
+* {
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+:focus {
+    outline: none;
+}
+:focus-visible {
+	outline: none;
+}
+
+input[type=number]::-webkit-outer-spin-button,
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+input[type=number] {
+	-moz-appearance: textfield;
+}
+
+[class*="NetlifyCreditIcon"],
+[class*="LoginButtonIcon"] {
+	display: none;
+}
+
+[class*="CustomIconWrapper"] {
+	text-align: center;
+}
+[class*="CustomIconWrapper"] img {
+	max-width: 100%;
+	max-height: 120px;
+	object-fit: contain;
+}
+[class*="CollectionTopContainer-card-cardTop"],
+[class*="CollectionControlsContainer"],
+[class*="ListCard-card"],
+[class*="SearchResultContainer"] {
+	width: 100%;
+}
+[class*="CardsGrid"] {
+	width: calc(100% + 12px);
+}
+
+header nav li > * {
+	white-space: nowrap;
+}
+[role="menu"] > ul {
+	left: auto;
+	right: 0;
+}
+[class*="ToolbarSubSectionFirst"] [role="menu"] > ul {
+	min-width: 220px;
+}
+
+[class*="AppHeaderNavList"] > li:not(:first-child) {
+	display: none;
+}
+
+[class*="AppHeaderNavList"] [class*="IconWrapper"] svg,
+[class*="SidebarNavList"] [class*="IconWrapper"] svg,
+[class*="SearchContainer"] [class*="IconWrapper"] svg {
+	display: none;
+}
+[class*="AppHeaderNavList"] li a:not(:hover):not(.header-link-active) [class*="IconWrapper"],
+[class*="AppHeaderNavList"] li button:not(:hover):not(.header-link-active) [class*="IconWrapper"],
+[class*="SidebarNavList"] li a:not(:hover):not(.sidebar-active) [class*="IconWrapper"] {
+	filter: saturate(.5) opacity(.8);
+}
+[class*="AppHeaderNavList"] [href="#/"] [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>');
+}
+[class*="AppHeaderNavList"] [href="#/workflow"] [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><rect x="7" y="7" width="3" height="9"/><rect x="14" y="7" width="3" height="5"/></svg>');
+}
+[class*="AppHeaderNavList"] .e16dayda1 [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>');
+}
+[class*="SidebarNavList"] li a [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>');
+}
+[data-testid="product"] [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>') !important;
+}
+[data-testid="blog"] [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>') !important;
+}
+
+[class*="SearchContainer"] [class*="IconWrapper"]:before {
+	content: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="18" fill="none" stroke="rgb(58, 105, 199)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>');
+}
+
+.css-npvq26-SidebarHeading {
+	display: none;
+}
+.css-6fxb8u-SearchContainer {
+	margin: 6px 12px;
+}
+.css-1lv5pus-SidebarNavList {
+	margin: 5px 0 0;
+}
+.css-1iwq7gj-GridCard-card {
+	flex: 0 0 calc(33.3333% - 12px);
+}
+
+.css-155hzph-LoaderText:after {
+	content: '';
+	display: block;
+	background: rgba(255,255,255,.9);
+	width: calc(100% + 2rem);
+	height: calc(100% + 2rem);
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: -1;
+	margin: -1.4rem -1rem;
+	border-radius: 0.5rem;
+	box-shadow: 0 0 20px rgba(0,0,0,.1);
+}
+.css-1pug8yq-LoaderItem {
+	min-width: 50px;
+	position: relative;
+	transform: initial;
+}
+
+[for*="published-field"] {
+	display: none;
+}
+[for*="published-field"] + div {
+	padding: 0;
+	border: none;
+	text-align: right;
+	padding-top: 20px;
+	padding-right: 70px;
+}
+[for*="published-field"] + div button:before {
+	content: 'Publikasi';
+	position: absolute;
+	left: 3rem;
+}
+
+@media (max-width: 999px) {
+	.css-1iwq7gj-GridCard-card {
+		flex: 0 0 calc(50% - 12px);
+	}
+}
+
+@media (max-width: 799px) {
+	.css-1gj57a0-SidebarContainer-card {
+		position: static;
+		width: 100%;
+		margin-bottom: 30px;
+	}
+	.css-v758ki-AppMainContainer,
+	.css-12b66la-AppHeaderContent {
+		min-width: 0;
+	}
+	.css-104dqk8-AppHeaderButton-button-buttonActive-buttonActive-buttonActive-buttonActive-AppHeaderButton,
+	.css-12yqrwa-AppHeaderNavLink-AppHeaderButton-button-buttonActive-buttonActive-buttonActive-buttonActive-AppHeaderButton {
+		margin: 0;
+		padding: 16px 7px;
+	}
+	.css-1f7nhiq-CollectionMain {
+		padding-left: 0;
+	}
+	.css-1hvrgvd-CollectionTopContainer-card-cardTop {
+		width: 100%;
+	}
+	.css-16b5p1f-ToolbarSectionMain-toolbarSection {
+		flex-direction: column;
+		justify-content: space-evenly;
+	}
+	.css-e9z4u8-AppHeaderSiteLink {
+		display: none;
+	}
+	.css-1f3mf5k-StyledModal {
+		padding: 15px;
+		grid-template-rows: 190px auto;
+		width: calc(100% - 1rem);
+		height: 90%;
+	}
+	.css-svjxk-SearchContainer {
+		display: block;
+		width: 100%;
+	}
+	.css-smzvtl-LibraryTop {
+		flex-direction: column;
+	}
+	.css-3ifd9s-ActionsContainer {
+		text-align: center;
+	}
+	.css-1ih1y1j-LibraryTitle {
+		margin-bottom: 15px;
+	}
+	.css-2ptjc9-UpperActionsContainer {
+		display: inline-block;
+	}
+	.css-1qukh7n-DownloadButton-button-default-disabled-button {
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.css-13rmovq-StyledUploadButton-button-default-disabled-button-gray {
+		margin-left: 10px;
+	}
+	.css-1hpjyse-DeleteButton-button-default-disabled-button-lightRed {
+		margin-top: 10px;
+		margin-left: 0;
+		margin-right: 0;
+	}
+	.css-1s67tkf-InsertButton-button-default-disabled-button-green {
+		margin-top: 10px;
+		margin-left: 10px;
+	}
+	.css-16796rj-LowerActionsContainer {
+		display: inline-block;
+		margin-top: 0;
+	}
+	.css-stmjdx-CardGridContainer {
+		position: static;
+		overflow: visible;
+		width: 100%;
+		padding-top: 20px;
+	}
+	.css-hn3jn7-EditorContainer {
+		min-width: 0;
+		padding-top: 55px;
+	}
+	.css-2oej7z-ToolbarContainer {
+		height: initial;
+		width: 100%;
+		min-width: 0;
+	}
+	.css-osnbqe-ToolbarToggle {
+		flex-direction: column;
+	}
+	.css-tg1x8v-IconWrapper {
+		width: 24px;
+	}
+
+	nav li {
+		width: 35px;
+		overflow: hidden;
+	}
+
+	[role="menu"] > ul {
+		min-width: 220px;
+	}
+	.cms-editor-visual [role="menu"] > ul {
+		min-width: initial;
+	}
+
+	[class*="ToolbarSectionMeta"] {
+		display: none;
+	}
+	[class*="ToolbarSectionBackLink"] {
+		background-color: #f7f7f7;
+		padding: 1rem;
+	}
+	[class*="ToolbarSubSectionLast"],
+	[class*="ToolbarSectionBackLink"] > div:last-child {
+		display: none;
+	}
+	[class*="ToolbarSectionMain"] {
+		flex-direction: row;
+		padding: .6rem;
+	}
+
+	.css-1iwq7gj-GridCard-card {
+		width: calc(100% - 12px);
+		flex: 0 0 auto;
+	}
+	.css-134r1tn-RowContainer {
+		display: block;
+	}
+	.css-1o58c3b-ButtonsContainer {
+		text-align: left;
+		margin-left: -15px;
+		margin-top: 1rem;
+	}
+	.css-1i85phj-CloseButton-button {
+		right: 40px;
+		left: auto;
+	}
+	.css-g42qkj-ToolbarSubSectionFirst {
+		flex-direction: row-reverse;
+		margin-left: auto;
+	}
+	.css-179mynt-BackArrow {
+		margin-right: 0;
+	}
+
+	[class*="SearchContainer"] + [class*="ButtonsContainer"] > button {
+		font-size: 11px;
+	}
+	[class*="ButtonsContainer"] > * {
+		margin-bottom: 1rem;
+	}
+}

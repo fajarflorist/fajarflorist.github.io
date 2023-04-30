@@ -1,0 +1,87 @@
+backend:
+  name: github
+  repo: fajarflorist/fajarflorist.github.io
+  branch: main
+  site_domain: chipper-entremet-afb4ad.netlify.app
+
+local_backend:
+  url: http://localhost:8081/api/v1
+
+site_url: https://fajarflorist.github.io
+display_url: https://fajarflorist.github.io
+logo_url: https://fajarflorist.github.io/assets/img/favicon.png
+
+search: true
+show_preview_links: true
+editor:
+  preview: false
+
+media_folder: "assets/upload"
+public_folder: "/assets/upload"
+
+collections:
+  - label: "Laman"
+    name: "page"
+    identifier_field: name
+    folder: "_posts/page"
+    media_folder: "../../assets/upload/page"
+    public_folder: "/assets/upload/page"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Publikasi", name: "published", widget: "boolean", default: true}
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Konten", name: "body", widget: "markdown"}
+      - {label: "Tanggal", name: "date", widget: "datetime"}
+  - label: "Blog"
+    name: "blog"
+    identifier_field: name
+    folder: "_posts/blog"
+    media_folder: "../../assets/upload/blog"
+    public_folder: "/assets/upload/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template", name: "layout", widget: "hidden", default: "blog"}
+      - {label: "Publikasi", name: "published", widget: "boolean", default: true}
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Kategori", name: "category", widget: "string"}
+      - {label: "Tag", name: "tags", widget: "list", hint: "Pisahkan dengan koma"}
+      - {label: "Konten", name: "body", widget: "markdown"}
+      - {label: "Tanggal", name: "date", widget: "datetime", date_format: "DD-MM-YYYY", time_format: "HH:mm", format: "YYYY-MM-DD HH:mm"}
+  - label: "Produk"
+    name: "product"
+    identifier_field: name
+    folder: "_posts/product"
+    media_folder: "../../assets/upload/product"
+    public_folder: "/assets/upload/product"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template", name: "layout", widget: "hidden", default: "product"}
+      - {label: "Publikasi", name: "published", widget: "boolean", default: true}
+      - {label: "Judul", name: "title", widget: "string"}
+      - label: "Harga"
+        name: "price"
+        widget: "object"
+        allow_add: false
+        minimize_collapsed: true
+        summary: "Rp {{fields.regular}} · Diskon Rp {{fields.promo}}"
+        fields:
+          - {label: "Harga Reguler", name: "regular", widget: "number"}
+          - {label: "Harga Promo", name: "promo", widget: "number", hint: "Kosongi jika tidak ada promo", required: false}
+      - {label: "Stok", name: "stock", widget: "select", options: ["Stok Ada", "Stok Habis"], default: "Stok Ada"}
+      - {label: "Atribut", name: "attribute", widget: "select", options: ["Terlaris", "Baru", "Tanpa Atribut"], default: "Tanpa Atribut"}
+      - {label: "Kategori", name: "category", widget: "string"}
+      - {label: "Foto Utama", name: "thumbnail", widget: "image"}
+      - label: "Foto Lainnya"
+        name: "photos"
+        widget: "list"
+        minimize_collapsed: true
+        fields:
+          - {label: "Foto Produk", name: "photo", widget: "image"}
+      - {label: "Deskripsi", name: "body", widget: "markdown"}
+      - {label: "Tag", name: "tags", widget: "list", hint: "Pisahkan dengan koma"}
+      - {label: "Tanggal", name: "date", widget: "datetime"}
