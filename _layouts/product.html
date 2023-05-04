@@ -65,7 +65,7 @@ layout: default
 				{%- endif %}
 
 				<section class="product-cart-add max-lg:hidden">
-					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %}>
+					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}')">
 						Pesan Sekarang
 					</button>
 				</section>
@@ -103,49 +103,51 @@ layout: default
 			{% if page.price -%}
 			<article class="product-price">
 				{%- if page.price.promo %}
-					{%- assign regular = page.price.regular | remove: "." %}
-					{%- assign promo = page.price.promo | remove: "." %}
+					{%- if page.price.promo != "" %}
+						{%- assign regular = page.price.regular | remove: "." %}
+						{%- assign promo = page.price.promo | remove: "." %}
 
-					<div class="flex items-center gap-2 my-1">
-						{%- assign price_promo = promo %}
-						<div class="current">
-							Rp <span class="currency">{{ price_promo }}</span>
-						</div>
+						<div class="flex items-center gap-2 my-1">
+							{%- assign price_promo = promo %}
+							<div class="current">
+								Rp <span class="currency">{{ price_promo }}</span>
+							</div>
 
-						{%- assign float_regular = regular | times: 1.0 %}
-						{%- assign float_promo = promo | times: 1.0 %}
-						{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
-						{%- assign decimal_split = decimal | split: '.' %}
-						{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
-						{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+							{%- assign float_regular = regular | times: 1.0 %}
+							{%- assign float_promo = promo | times: 1.0 %}
+							{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+							{%- assign decimal_split = decimal | split: '.' %}
+							{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+							{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
 
-						{%- if decimal_split[1] == "0" %}
-							{%- assign discount = fix_decimal_split %}
-						{%- else %}
-							{%- if decimal_split[1].size <= 2 %}
-								{%- assign discount = fix_decimal %}
+							{%- if decimal_split[1] == "0" %}
+								{%- assign discount = fix_decimal_split %}
 							{%- else %}
-								{%- assign discount = fix_decimal | slice: 0,5 %}
+								{%- if decimal_split[1].size <= 2 %}
+									{%- assign discount = fix_decimal %}
+								{%- else %}
+									{%- assign discount = fix_decimal | round: 2 %}
+								{%- endif %}
 							{%- endif %}
-						{%- endif %}
 
-						<div class="discount">
-							Diskon <span>{{ discount }}%</span>
-						</div>
-					</div>
-
-					<div class="flex items-center gap-2 my-1">
-						{%- assign price_regular = regular %}
-						<div class="line-through past -ml-1">
-							&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+							<div class="discount">
+								Diskon <span>{{ discount }}%</span>
+							</div>
 						</div>
 
-						{%- assign saving = regular | minus: promo %}
-						{%- assign price_saving = saving %}
-						<div class="saving">
-							Kamu hemat Rp <span class="currency">{{ price_saving }}</span>
+						<div class="flex items-center gap-2 my-1">
+							{%- assign price_regular = regular %}
+							<div class="line-through past -ml-1">
+								&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+							</div>
+
+							{%- assign saving = regular | minus: promo %}
+							{%- assign price_saving = saving %}
+							<div class="saving">
+								Kamu hemat Rp <span class="currency">{{ price_saving }}</span>
+							</div>
 						</div>
-					</div>
+					{%- endif %}
 				{%- else %}
 					{%- assign regular = page.price.regular | remove: "." %}
 					{%- assign price_regular = regular %}
@@ -157,7 +159,7 @@ layout: default
 			{% endif -%}
 
 			<article class="product-cart-add lg:hidden">
-				<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %}>
+				<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }},'{{ site.url }}{{ page.url }}')">
 					Pesan Sekarang
 				</button>
 			</article>
@@ -168,7 +170,7 @@ layout: default
 
 			{% if page.tags.size > 0 %}
 			<article class="product-tag">
-				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline w-5 h-5 -mt-px">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="inline w-5 h-5 -mt-1">
 					<path stroke-linecap="round" stroke-linejoin="round" d="M5.25 8.25h15m-16.5 7.5h15m-1.8-13.5l-3.9 19.5m-2.1-19.5l-3.9 19.5" />
 				</svg>
 				{% for tag in page.tags %}

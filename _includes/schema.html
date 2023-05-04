@@ -1,0 +1,75 @@
+<!-- Schema.org -->
+	{%- if page.url == '/' %}
+	<script type="application/ld+json">
+		{
+			"@context": "https://schema.org/",
+			"@type": "WebSite",
+			"name": "{{ site.title }}",
+			"url": "{{ site.url }}",
+			"potentialAction": {
+				"@type": "SearchAction",
+				"target": "{{ site.url }}/#/search?q={search_term_string}",
+				"query-input": "required name=search_term_string"
+			}
+		}
+	</script>
+	{%- endif -%}
+
+	{%- if page.layout == 'product' %}
+		{%- capture brand -%}
+			{{ site.title }}
+		{%- endcapture -%}
+
+		{%- capture name -%}
+			{{ page.title }}
+		{%- endcapture -%}
+
+		{%- capture thumbnail -%}
+			{%- if page.thumbnail contains 'http' -%}
+				{{ page.thumbnail }}
+			{%- else -%}
+				{{ site.url }}{{ page.thumbnail }}
+			{%- endif -%}
+		{%- endcapture -%}
+
+		{%- capture description -%}
+			{{ page.content | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip_html | replace: '  ', ' ' | strip | truncatewords: 50 }}
+		{%- endcapture -%}
+
+		{%- capture url -%}
+			{{ site.url }}{{ page.url }}
+		{%- endcapture -%}
+
+		{%- if page.price.promo %}
+			{%- if page.price.promo != "" %}
+				{%- capture price -%}
+					{{ page.price.promo }}
+				{%- endcapture -%}
+			{%- endif %}
+		{%- else %}
+			{%- capture price -%}
+				{{ page.price.regular }}
+			{%- endcapture -%}
+		{%- endif %}
+	<script type="application/ld+json">
+		{
+			"@context": "http://schema.org/",
+			"@type": "Product",
+			"name": "{{ name }}",
+			"image": "{{ thumbnail }}",
+			"description": "{{ description }}",
+			"brand": {
+				"@type": "Brand",
+				"name": "{{ brand }}"
+			},
+			"offers": {
+				"@type": "Offer",
+				"priceCurrency": "IDR",
+				"price": "{{ price }}",
+				"url": "{{ url }}",
+				"availability": "https://schema.org/InStock",
+				"itemCondition": "https://schema.org/NewCondition"
+			}
+		}
+	</script>
+	{%- endif -%}

@@ -9,11 +9,13 @@
 
 	{% include meta.html %}
 
+	{% include schema.html %}
+
 	<!-- Preload -->
 	<link rel="preload" as="style" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	<link rel="preload" as="style" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="style" href="{{ '/assets/css/main.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="script" href="{{ '/assets/js/main.js' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/main.css?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/main.js?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	{%- if page.layout == 'product' %}
 	<link rel="preload" as="style" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
 	<link rel="preload" as="script" href="{{ '/assets/js/jquery.min.js' | relative_url }}" />
@@ -27,7 +29,7 @@
 	{%- endif %}
 	<link rel="stylesheet" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	<link rel="stylesheet" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/main.css?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 
 	<!-- Development -->
 	<link rel="stylesheet" href="{{ 'tailwind.css' | relative_url }}" />
@@ -37,7 +39,14 @@
 		<div class="h-screen max-lg:overflow-auto max-lg:pb-[6.7rem]" id="viewport">
 			<div class="flex flex-col items-center min-h-full max-lg:overflow-x-hidden [&_header]:w-full [&_main]:w-full [&_footer]:w-full [&_footer]:mt-auto">
 
-<header></header>
+{%- if page.url == '/' %}
+<header class="bg-gradient-to-bl from-color-1 to-color-2 text-white mb-10">
+	<section class="px-6 lg:px-10 py-6">
+		<img src="assets/img/favicon.png" alt="{{ site.title }}" class="max-h-[75px] mx-auto mt-1 mb-2" width="75" height="75" />
+		<p class="text-xl font-bold text-center">{{ site.title }}</p>
+	</section>
+</header>
+{%- endif %}
 
 <main>
 	{{ content }}
@@ -49,7 +58,7 @@
 	<script src="{{ '/assets/js/splide.min.js' | relative_url }}"></script>
 	<script src="{{ '/assets/js/zoom.min.js' | relative_url }}"></script>
 	{%- endif %}
-	<script src="{{ '/assets/js/main.js' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
+	<script src="{{ '/assets/js/main.js?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
 
 	{%- include google_tag_manager.html %}
 </slot>

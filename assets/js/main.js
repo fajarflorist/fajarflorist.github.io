@@ -12,10 +12,12 @@
 	}
 
 // Product Zoom
-	$('.zoom').zoom({
-		on: 'mouseover',
-		touch: false,
-	})
+	if ( document.querySelector('.zoom') ) {
+		$('.zoom').zoom({
+			on: 'mouseover',
+			touch: false,
+		})
+	}
 
 // Product Currency
 	function numberWithCommas(num) {
@@ -27,3 +29,7 @@
 		item.innerHTML = currency
 	})
 
+// Product Order
+	function order(number,chat,product,url) {
+		window.open('https://api.whatsapp.com/send?phone=' + number + '&text=' + chat + product + '%0A' + url, '_blank').focus()
+	}

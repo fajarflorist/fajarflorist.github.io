@@ -6,14 +6,14 @@ layout: default
 <section class="px-6 lg:px-10">
 	<h2>Semua Laman</h2>
 	<div class="bg-zinc-100 p-5 rounded-lg my-5">
-		{% for post in site.posts %}
-			{% if post.layout != 'page' %}
+		{% for page in site.posts %}
+			{% if page.layout != 'page' %}
 				{% continue %}
 			{% endif %}
 
 			<article class="my-4 first:mt-0 last:mb-0">
-				<h3>{{ post.title }}</h3>
-				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+				<h3>{{ page.title }}</h3>
+				<p><a href="{{ page.url }}">Lihat selengkapnya</a></p>
 			</article>
 		{% endfor %}
 	</div>
@@ -24,14 +24,14 @@ layout: default
 <section class="px-6 lg:px-10">
 	<h2>Semua Blog</h2>
 	<div class="bg-zinc-100 p-5 rounded-lg my-5">
-		{% for post in site.posts %}
-			{% if post.layout != 'blog' %}
+		{% for page in site.posts %}
+			{% if page.layout != 'blog' %}
 				{% continue %}
 			{% endif %}
 
 			<article class="my-4 first:mt-0 last:mb-0">
-				<h3>{{ post.title }}</h3>
-				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+				<h3>{{ page.title }}</h3>
+				<p><a href="{{ page.url }}">Lihat selengkapnya</a></p>
 			</article>
 		{% endfor %}
 	</div>
@@ -40,18 +40,85 @@ layout: default
 
 {% if site.content_products %}
 <section class="px-6 lg:px-10">
-	<h2>Semua Produk</h2>
-	<div class="bg-zinc-100 p-5 rounded-lg my-5">
-		{% for post in site.posts %}
-			{% if post.layout != 'product' %}
+	<div class="product">
+		{%- for page in site.posts -%}
+			{% if page.layout != 'product' %}
 				{% continue %}
 			{% endif %}
 
-			<article class="my-4 first:mt-0 last:mb-0">
-				<h3>{{ post.title }}</h3>
-				<p><a href="{{ post.url }}">Lihat selengkapnya</a></p>
+			<article class="product-item">
+				{%- if page.thumbnail %}
+				<a class="block border-b border-slate-100 {% if page.stock == 'Stok Habis' %}grayscale{% endif %}" href="{{ page.url }}">
+					<picture class="block skeleton">
+						<img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="w-full h-full object-cover aspect-square" width="600" height="600" loading="lazy" onload="this.closest('.skeleton').classList.remove('skeleton')" />
+					</picture>
+				</a>
+				{%- endif %}
+
+				<div class="product-body">
+					<a class="block mb-3" href="{{ page.url }}">
+						{%- if page.attribute != "Tanpa Atribut" %}
+						<div class="product-attribute mb-2 md:mb-3">
+							<span>{{ page.attribute }}</span>
+						</div>
+						{%- endif %}
+
+						<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2">{{ page.title }}</h3>
+
+						{% if page.price -%}
+						<div class="product-price my-1">
+							{%- if page.price.promo %}
+								{%- if page.price.promo != "" %}
+									{%- assign regular = page.price.regular | remove: "." %}
+									{%- assign promo = page.price.promo | remove: "." %}
+
+									{%- assign price_promo = promo %}
+									<div class="current">
+										Rp <span class="currency">{{ price_promo }}</span>
+									</div>
+
+									{%- assign price_regular = regular %}
+									<div class="line-through past -ml-1">
+										&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+									</div>
+
+									{%- assign float_regular = regular | times: 1.0 %}
+									{%- assign float_promo = promo | times: 1.0 %}
+									{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+									{%- assign decimal_split = decimal | split: '.' %}
+									{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+									{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+
+									{%- if decimal_split[1] == "0" %}
+										{%- assign discount = fix_decimal_split %}
+									{%- else %}
+										{%- if decimal_split[1].size <= 2 %}
+											{%- assign discount = fix_decimal %}
+										{%- else %}
+											{%- assign discount = fix_decimal | round: 2 %}
+										{%- endif %}
+									{%- endif %}
+
+									<div class="discount">
+										Diskon <span>{{ discount }}%</span>
+									</div>
+								{%- endif %}
+							{%- else %}
+								{%- assign regular = page.price.regular | remove: "." %}
+								{%- assign price_regular = regular %}
+								<div class="current">
+									Rp <span class="currency">{{ price_regular }}</span>
+								</div>
+							{%- endif %}
+						</div>
+						{% endif -%}
+					</a>
+					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
+						Pesan Sekarang
+					</button>
+				</div>
 			</article>
-		{% endfor %}
+		{%- endfor -%}
 	</div>
 </section>
 {% endif %}

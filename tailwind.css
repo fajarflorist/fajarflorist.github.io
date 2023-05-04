@@ -124,6 +124,9 @@
 	.button {
 		@apply flex justify-center no-underline w-full h-full rounded-lg shadow-xl py-3 px-4 md:px-6 font-medium text-white hover:text-white bg-color-1 hover:bg-color-2 focus-visible:outline-none disabled:pointer-events-none disabled:text-zinc-400 disabled:bg-zinc-200 disabled:hover:bg-zinc-200 [&.disabled]:pointer-events-none [&.disabled]:text-zinc-400 [&.disabled]:bg-zinc-200 [&.disabled]:hover:bg-zinc-200;
 	}
+	.button.alt {
+		@apply text-white hover:text-white bg-color-3 hover:bg-color-4;
+	}
 
 	.swipe {
 		@apply snap-x snap-mandatory whitespace-nowrap overflow-auto flex;
@@ -135,6 +138,34 @@
 	}
 	.swipe > * {
 		@apply snap-start whitespace-normal min-w-full;
+	}
+
+	.product {
+		@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-x-4 md:gap-x-8 gap-y-5 md:gap-y-9 pb-12;
+	}
+	.product-item {
+		@apply relative flex flex-col border border-slate-100 shadow-xl rounded-xl overflow-hidden hover:border-color-1 hover:outline outline-2 outline-color-1;
+	}
+	.product-item a {
+		@apply text-inherit hover:text-inherit;
+	}
+	.product-item .product-attribute span {
+		@apply text-[10px] md:text-[11px];
+	}
+	.product-item .product-price .current {
+		@apply text-lg;
+	}
+	.product-item .product-price .past {
+		@apply text-xs;
+	}
+	.product-item .product-price .discount {
+		@apply text-xs absolute top-2 right-2;
+	}
+	.product-body {
+		@apply flex flex-col h-full p-3 md:p-4 lg:p-6;
+	}
+	.product-body .button {
+		@apply max-md:p-2 max-md:text-xs shadow-none md:mb-1 h-auto mt-auto;
 	}
 
 	.product-image {
@@ -162,7 +193,7 @@
 		@apply bg-slate-100 inline py-1 px-2 rounded-md text-xs [&_span]:font-bold;
 	}
 	.product-attribute span {
-		@apply bg-emerald-500 text-white inline py-1 px-2 rounded-md text-xs font-bold uppercase tracking-widest;
+		@apply bg-rose-500 text-white inline py-1 px-2 rounded-md text-xs font-bold uppercase tracking-widest;
 	}
 	.product-description {
 		@apply my-10;
@@ -177,7 +208,7 @@
 		@apply inline-block pt-px;
 	}
 	.product-tag {
-		@apply opacity-50;
+		@apply opacity-50 text-sm;
 	}
 	.product-cart-add {
 		@apply my-8 lg:my-6;

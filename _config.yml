@@ -6,13 +6,17 @@
 url: 
 
 # Name of your site, e.g. ACME Corp.
-title: Corporate
+title: Fajar Florist
 
 # Short bio or description, e.g. Professional architect for your house.
-description: Lorem ipsum qui elit in adipisicing in sint adipisicing commodo occaecat qui consectetur labore.
+description: Karangan bunga area Jabodetabek, melayani pesan antar, pengerjaan cepat dan diantar sampai tujuan!
 
 # Keywords for search engine crawling & separate with comma, e.g. lorem, ipsum, dolor, commodo
-keywords: lorem, ipsum, et, dolor, commodo, incididunt, mollit
+keywords: karangan, bunga, kembang, flower, florist, duka, suka, cita, berduka, bahagia
+
+# WhatsApp config for product order, for encode chat template use https://www.urlencoder.org/
+whatsapp_number: 628123456789
+whatsapp_chat: Halo%20kak...%0ASaya%20mau%20order%20
 
 # What collections do you want to show, value is true or false
 content_pages: false

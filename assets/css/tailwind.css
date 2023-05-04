@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.2.7 | MIT License | https://tailwindcss.com
+! tailwindcss v3.3.2 | MIT License | https://tailwindcss.com
 *//*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
@@ -25,6 +25,7 @@
 3. Use a more readable tab size.
 4. Use the user's configured `sans` font-family by default.
 5. Use the user's configured `sans` font-feature-settings by default.
+6. Use the user's configured `sans` font-variation-settings by default.
 */
 
 html {
@@ -35,6 +36,7 @@ html {
      tab-size: 4; /* 3 */
   font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
   font-feature-settings: normal; /* 5 */
+  font-variation-settings: normal; /* 6 */
 }
 
 /*
@@ -589,7 +591,7 @@ select {
   transition-duration: 100ms;
 }
 
-	.dark body {
+	:is(.dark body) {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
@@ -637,8 +639,8 @@ select {
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
-	.dark input,.dark 
-	textarea {
+	:is(.dark input),:is(.dark 
+	textarea) {
   --tw-bg-opacity: 1;
   background-color: rgb(39 39 42 / var(--tw-bg-opacity));
 }
@@ -681,6 +683,9 @@ select {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -728,6 +733,9 @@ select {
   --tw-pan-y:  ;
   --tw-pinch-zoom:  ;
   --tw-scroll-snap-strictness: proximity;
+  --tw-gradient-from-position:  ;
+  --tw-gradient-via-position:  ;
+  --tw-gradient-to-position:  ;
   --tw-ordinal:  ;
   --tw-slashed-zero:  ;
   --tw-numeric-figure:  ;
@@ -1229,6 +1237,18 @@ select {
   --tw-bg-opacity: 1;
   background-color: rgb(228 228 231 / var(--tw-bg-opacity));
 }
+.button.alt {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--color-3) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+.button.alt:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(var(--color-4) / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 .swipe {
   display: flex;
   scroll-snap-type: x var(--tw-scroll-snap-strictness);
@@ -1245,6 +1265,124 @@ select {
   min-width: 100%;
   scroll-snap-align: start;
   white-space: normal;
+}
+.product {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  -moz-column-gap: 1rem;
+       column-gap: 1rem;
+  row-gap: 1.25rem;
+  padding-bottom: 3rem;
+}
+@media (min-width: 768px) {
+
+  .product {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    -moz-column-gap: 2rem;
+         column-gap: 2rem;
+    row-gap: 2.25rem;
+  }
+}
+@media (min-width: 1024px) {
+
+  .product {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+@media (min-width: 1536px) {
+
+  .product {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+  }
+}
+.product-item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+  outline-width: 2px;
+  outline-color: rgb(var(--color-1) / 1);
+}
+.product-item:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(var(--color-1) / var(--tw-border-opacity));
+  outline-style: solid;
+}
+.product-item a {
+  color: inherit;
+}
+.product-item a:hover {
+  color: inherit;
+}
+.product-item .product-attribute span {
+  font-size: 10px;
+}
+@media (min-width: 768px) {
+
+  .product-item .product-attribute span {
+    font-size: 11px;
+  }
+}
+.product-item .product-price .current {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+}
+.product-item .product-price .past {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.product-item .product-price .discount {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+.product-body {
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding: 0.75rem;
+}
+@media (min-width: 768px) {
+
+  .product-body {
+    padding: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+
+  .product-body {
+    padding: 1.5rem;
+  }
+}
+.product-body .button {
+  margin-top: auto;
+  height: auto;
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+}
+@media not all and (min-width: 768px) {
+
+  .product-body .button {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+    line-height: 1rem;
+  }
+}
+@media (min-width: 768px) {
+
+  .product-body .button {
+    margin-bottom: 0.25rem;
+  }
 }
 @media not all and (min-width: 1024px) {
 
@@ -1264,6 +1402,23 @@ select {
     --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
   }
+}
+.product-image .slider {
+  position: relative;
+}
+.product-image .slider::before {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  cursor: zoom-in;
+  --tw-content: '';
+  content: var(--tw-content);
+}
+.product-image .slider.allow-zoom::before {
+  z-index: -1;
+  content: var(--tw-content);
+  cursor: zoom-out;
 }
 .product-title {
   margin-bottom: 1rem;
@@ -1340,7 +1495,7 @@ select {
   display: inline;
   border-radius: 0.375rem;
   --tw-bg-opacity: 1;
-  background-color: rgb(16 185 129 / var(--tw-bg-opacity));
+  background-color: rgb(244 63 94 / var(--tw-bg-opacity));
   padding-top: 0.25rem;
   padding-bottom: 0.25rem;
   padding-left: 0.5rem;
@@ -1398,6 +1553,8 @@ select {
   padding-top: 1px;
 }
 .product-tag {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   opacity: 0.5;
 }
 .product-cart-add {
@@ -1410,6 +1567,9 @@ select {
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
   }
+}
+.absolute {
+  position: absolute;
 }
 .sticky {
   position: sticky;
@@ -1443,14 +1603,29 @@ select {
 .-mt-1 {
   margin-top: -0.25rem;
 }
-.-mt-px {
-  margin-top: -1px;
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-3 {
+  margin-bottom: 0.75rem;
 }
 .mb-4 {
   margin-bottom: 1rem;
 }
 .mr-2 {
   margin-right: 0.5rem;
+}
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.line-clamp-2 {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 .block {
   display: block;
@@ -1461,6 +1636,9 @@ select {
 .flex {
   display: flex;
 }
+.hidden {
+  display: none;
+}
 .h-5 {
   height: 1.25rem;
 }
@@ -1469,6 +1647,9 @@ select {
 }
 .h-screen {
   height: 100vh;
+}
+.max-h-\[75px\] {
+  max-height: 75px;
 }
 .min-h-full {
   min-height: 100%;
@@ -1482,8 +1663,8 @@ select {
 .max-w-6xl {
   max-width: 72rem;
 }
-.\!cursor-zoom-out {
-  cursor: zoom-out !important;
+.max-w-md {
+  max-width: 28rem;
 }
 .cursor-zoom-in {
   cursor: zoom-in;
@@ -1500,13 +1681,38 @@ select {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.border-b {
+  border-bottom-width: 1px;
+}
+.border-slate-100 {
+  --tw-border-opacity: 1;
+  border-color: rgb(241 245 249 / var(--tw-border-opacity));
+}
 .bg-zinc-100 {
   --tw-bg-opacity: 1;
   background-color: rgb(244 244 245 / var(--tw-bg-opacity));
 }
+.bg-red-100\/40 {
+  background-color: rgb(254 226 226 / 0.4);
+}
+.bg-gradient-to-bl {
+  background-image: linear-gradient(to bottom left, var(--tw-gradient-stops));
+}
+.from-color-1 {
+  --tw-gradient-from: rgb(var(--color-1) / 1) var(--tw-gradient-from-position);
+  --tw-gradient-to: rgb(var(--color-1) / 0) var(--tw-gradient-to-position);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-color-2 {
+  --tw-gradient-to: rgb(var(--color-2) / 1) var(--tw-gradient-to-position);
+}
 .object-contain {
   -o-object-fit: contain;
      object-fit: contain;
+}
+.object-cover {
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .p-5 {
   padding: 1.25rem;
@@ -1515,8 +1721,37 @@ select {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
 }
+.py-6 {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+.text-center {
+  text-align: center;
+}
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+.font-bold {
+  font-weight: 700;
+}
+.text-white {
+  --tw-text-opacity: 1;
+  color: rgb(255 255 255 / var(--tw-text-opacity));
+}
 .line-through {
   text-decoration-line: line-through;
+}
+.opacity-30 {
+  opacity: 0.3;
 }
 .grayscale {
   --tw-grayscale: grayscale(100%);
@@ -1526,7 +1761,7 @@ select {
 		aspect-ratio: 1 / 1;
 	}
 
-.dark .dark\:prose-invert {
+:is(.dark .dark\:prose-invert) {
   --tw-prose-body: var(--tw-prose-invert-body);
   --tw-prose-headings: var(--tw-prose-invert-headings);
   --tw-prose-lead: var(--tw-prose-invert-lead);
@@ -1602,6 +1837,23 @@ select {
   }
 }
 
+@media (min-width: 768px) {
+
+  .md\:mb-3 {
+    margin-bottom: 0.75rem;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-lg {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
+}
+
 @media (min-width: 1024px) {
 
   .lg\:order-1 {
@@ -1640,6 +1892,14 @@ select {
 
   .lg\:pr-8 {
     padding-right: 2rem;
+  }
+}
+
+@media (min-width: 1536px) {
+
+  .\32xl\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
