@@ -1,16 +1,17 @@
 ---
 layout: product
 published: true
-title: Anniversary
+title: "Anniversary #1"
 price:
-  regular: 700000
+  regular: 795000
 stock: Stok Ada
 attribute: Tanpa Atribut
-category: anniversary
+category: Anniversary
 thumbnail: /assets/upload/product/anniversary-bca.jpeg
 tags:
-  - karangan bunga
+  - papan
+  - bunga
   - anniversary
-date: 2023-05-03T15:11:51.760Z
+date: 2023-05-05T15:13:43.240Z
 ---
-D﻿eskripsi produk...
+*Deskripsi produk...*

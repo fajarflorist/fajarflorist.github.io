@@ -4,6 +4,18 @@
  * Copyright (c) 2023
  */
 
+// Categories
+	function categories(path,attr) {
+		let url = window.location.href
+		if ( window.location.href.indexOf(path) > -1 ) {
+			let query = url.split('?q=')
+			document.querySelectorAll('[' + attr + ']:not([' + attr + '="' + query[1].replace(/[+]/g,' ') + '"])').forEach(item => {
+				item.classList.add('hidden')
+			})
+		}
+	}
+	categories('kategori/?q=','data-category')
+
 // Product Slider
 	for (let i=0; i<document.getElementsByClassName('splide').length; i++) {
 		new Splide('.splide', {

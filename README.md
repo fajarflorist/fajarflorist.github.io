@@ -60,10 +60,10 @@ git push origin main
 3. Fill in the form
 ```
 Application name :
-<app_name> e.g. Blog
+<app_name> e.g. Shop
 
 Homepage URL :
-<site_url> e.g. https://hikammn.github.io/
+<site_url> e.g. https://fajarflorist.github.io/
 
 Application description :
 <app_description> e.g. Admin panel
@@ -100,16 +100,16 @@ Set configuration of your website on `/admin/config.yml`, you can change this to
 ```
 backend:
   name: github
-  repo: <username>/<repository>   # e.g. hikammn/hikammn.github.io
+  repo: <username>/<repository>   # e.g. fajarflorist/fajarflorist.github.io
   branch: <branch>                # e.g. main
   site_domain: <netlify_app_url>  # e.g. relaxed-blancmange-bf2a4b.netlify.app
 
 local_backend:
   url: <localhost_port_url>       # e.g. http://localhost:8081/api/v1
 
-site_url: <site_url>              # e.g. https://hikammn.com or https://hikammn.github.io
-display_url: <site_url>           # e.g. https://hikammn.com or https://hikammn.github.io
-logo_url: <image_url>             # e.g. https://hikammn.github.io/assets/img/favicon.png
+site_url: <site_url>              # e.g. https://fajarflorist.com or https://fajarflorist.github.io
+display_url: <site_url>           # e.g. https://fajarflorist.com or https://fajarflorist.github.io
+logo_url: <image_url>             # e.g. https://fajarflorist.github.io/assets/img/favicon.png
 ```
 
 ## Running CMS on Local

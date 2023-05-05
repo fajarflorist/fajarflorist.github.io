@@ -1,51 +1,18 @@
 ---
 layout: default
+title: Kategori
+permalink: /kategori/
 ---
 
-	{%- if site.content_pages -%}
-	<section class="px-6 lg:px-10">
-		<h2>Semua Laman</h2>
-		<div class="bg-zinc-100 p-5 rounded-lg my-5">
-			{%- for page in site.posts -%}
-			{% if page.layout != 'page' %}
-				{% continue %}
-			{% endif %}
-
-			<article class="my-4 first:mt-0 last:mb-0">
-				<h3>{{ page.title }}</h3>
-				<p><a href="{{ page.url }}">Lihat selengkapnya</a></p>
-			</article>
-			{% endfor %}
-		</div>
-	</section>
-	{%- endif %}
-
-	{%- if site.content_blogs -%}
-	<section class="px-6 lg:px-10">
-		<h2>Semua Blog</h2>
-		<div class="bg-zinc-100 p-5 rounded-lg my-5">
-			{%- for page in site.posts -%}
-			{% if page.layout != 'blog' %}
-				{% continue %}
-			{% endif %}
-
-			<article class="my-4 first:mt-0 last:mb-0">
-				<h3>{{ page.title }}</h3>
-				<p><a href="{{ page.url }}">Lihat selengkapnya</a></p>
-			</article>
-			{% endfor %}
-		</div>
-	</section>
-	{%- endif %}
-
-	{%- if site.content_products -%}
-	<section class="px-6 lg:px-10">
+<section class="px-6 lg:px-10">
+{% for category in site.categories %}
+	{%- capture category_name -%}
+		{{ category | first }}
+	{%- endcapture -%}
+	<div data-category="{{ category_name }}">
+		<h2 class="text-2xl my-8">{{ category_name }}</h2>
 		<div class="product">
-			{%- for page in site.posts -%}
-			{% if page.layout != 'product' %}
-				{% continue %}
-			{% endif %}
-
+			{% for page in site.categories[category_name] %}
 			<article class="product-item">
 				{%- if page.thumbnail %}
 				<a class="block border-b border-slate-100 {% if page.stock == 'Stok Habis' %}grayscale{% endif %}" href="{{ page.url }}">
@@ -120,5 +87,6 @@ layout: default
 			</article>
 			{% endfor %}
 		</div>
-	</section>
-	{%- endif %}
+	</div>
+{% endfor %}
+</section>
