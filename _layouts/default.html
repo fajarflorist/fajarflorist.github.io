@@ -18,8 +18,8 @@
 	<!-- Preload -->
 	<link rel="preload" as="style" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	<link rel="preload" as="style" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="style" href="{{ '/assets/css/main.css?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="script" href="{{ '/assets/js/main.js?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/main.css?dev=1.1' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/main.js?dev=1.1' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	{%- if page.layout == 'product' %}
 	<link rel="preload" as="style" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
 	<link rel="preload" as="script" href="{{ '/assets/js/jquery.min.js' | relative_url }}" />
@@ -33,7 +33,7 @@
 	{%- endif %}
 	<link rel="stylesheet" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	<link rel="stylesheet" href="{{ '/assets/css/tailwind.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="stylesheet" href="{{ '/assets/css/main.css?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/main.css?dev=1.1' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 
 	<!-- Development -->
 	<link rel="stylesheet" href="{{ 'tailwind.css' | relative_url }}" />
@@ -108,7 +108,7 @@
 	<script src="{{ '/assets/js/splide.min.js' | relative_url }}"></script>
 	<script src="{{ '/assets/js/zoom.min.js' | relative_url }}"></script>
 	{%- endif %}
-	<script src="{{ '/assets/js/main.js?dev=1.0' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
+	<script src="{{ '/assets/js/main.js?dev=1.1' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
 
 	{%- include google_tag_manager.html %}
 </slot>
