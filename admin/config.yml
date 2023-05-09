@@ -20,20 +20,21 @@ media_folder: "assets/upload"
 public_folder: "/assets/upload"
 
 collections:
-  # - label: "Laman"
-  #   name: "page"
-  #   identifier_field: name
-  #   folder: "_posts/page"
-  #   media_folder: "../../assets/upload/page"
-  #   public_folder: "/assets/upload/page"
-  #   create: true
-  #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-  #   fields:
-  #     - {label: "Template", name: "layout", widget: "hidden", default: "page"}
-  #     - {label: "Publikasi", name: "published", widget: "boolean", default: true}
-  #     - {label: "Judul", name: "title", widget: "string"}
-  #     - {label: "Konten", name: "body", widget: "markdown"}
-  #     - {label: "Tanggal", name: "date", widget: "datetime"}
+  - label: "Laman"
+    name: "page"
+    identifier_field: name
+    folder: "_posts/page"
+    media_folder: "../../assets/upload/page"
+    public_folder: "/assets/upload/page"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Tampilkan di Navbar", name: "navbar", widget: "boolean", default: true}
+      - {label: "Publikasi", name: "published", widget: "boolean", default: true}
+      - {label: "Judul", name: "title", widget: "string"}
+      - {label: "Konten", name: "body", widget: "markdown"}
+      - {label: "Tanggal", name: "date", widget: "datetime"}
   # - label: "Blog"
   #   name: "blog"
   #   identifier_field: name

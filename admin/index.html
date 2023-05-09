@@ -38,19 +38,46 @@ sitemap: false
 			},1)
 		}
 
+		function navbarSwitch() {
+			let checkItem = setInterval(() => {
+				if ( document.querySelectorAll('[for*="navbar-field"]').length > 0 ) {
+					document.querySelectorAll('[for*="navbar-field"]').forEach(item => {
+						item.closest('[class*="ControlContainer"]').classList.add('navbar-switch')
+					})
+					clearInterval(checkItem)
+				}
+			},1)
+		}
+
 		let page = ['/page/','/product/']
 
 		for (i=0; i<page.length; i++) {
 			let string = page[i]
 
-			if ( window.location.href.indexOf(string) > -1 ) hideDate()
+			if ( window.location.href.indexOf(string) > -1 ) {
+				hideDate()
+			}
 
 			document.addEventListener('click', () => {
 				setTimeout(() => {
-					if ( window.location.href.indexOf(string) > -1 ) hideDate()
+					if ( window.location.href.indexOf(string) > -1 ) {
+						hideDate()
+					}
 				},50)
 			})
 		}
+
+		if ( window.location.href.indexOf(page[0]) > -1 ) {
+			navbarSwitch()
+		}
+
+		document.addEventListener('click', () => {
+			setTimeout(() => {
+				if ( window.location.href.indexOf(page[0]) > -1 ) {
+					navbarSwitch()
+				}
+			},50)
+		})
 	</script>
 </body>
 </html>

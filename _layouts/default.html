@@ -44,18 +44,50 @@
 			<div class="flex flex-col items-center min-h-full max-lg:overflow-x-hidden [&_header]:w-full [&_main]:w-full [&_footer]:w-full [&_footer]:mt-auto">
 
 <header>
-	<section class="px-6 lg:px-10 my-6 flex items-center justify-between">
+	<section class="px-6 lg:px-10 my-6 flex items-center justify-between flex-wrap">
 		<a href="{{ site.url }}" class="brand">
 			<img src="{{ '/assets/img/favicon.png' | relative_url }}" alt="logo" width="50" height="50" />
 			<span>{{ site.title }}</span>
 		</a>
-		<nav class="hidden md:block">
+		<button type="button" class="navbar-toggle md:hidden" aria-expanded="false">
+			<svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+				<path fill-rule="evenodd" d="M3 7a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 13a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd" />
+			</svg>
+			<span class="sr-only !overflow-hidden">Menu</span>
+		</button>
+		<nav class="hidden md:block max-md:pb-[6.7rem] z-10 navbar">
 			<ul>
-				{%- for category in site.categories %}
-				<li class="inline-block ml-4">
-					<a href="{{ site.url }}/kategori/?q={{ category | first | replace: ' ', '+' }}" class="text-inherit hover:text-inherit [&:not(:hover)]:opacity-60">
-						{{ category | first }}
-					</a>
+				<li class="navbar-dropdown">
+					<button type="button">Kategori</button>
+					<ul class="hidden">
+						{%- for category in site.categories %}
+						<li>
+							<a href="/kategori/?q={{ category | first | replace: ' ', '+' }}">
+								{{ category | first }}
+							</a>
+						</li>
+						{%- endfor %}
+					</ul>
+				</li>
+				<li class="navbar-dropdown">
+					<button type="button">Label</button>
+					<ul class="hidden capitalize">
+						{%- for tag in site.tags %}
+						<li>
+							<a href="/label/?q={{ tag | first | replace: ' ', '+' }}">
+								{{ tag | first }}
+							</a>
+						</li>
+						{%- endfor %}
+					</ul>
+				</li>
+				{%- assign navbar = site.posts | reverse -%}
+				{%- for page in navbar %}
+				{%- if page.layout != 'page' or page.navbar != true -%}
+					{% continue %}
+				{%- endif %}
+				<li>
+					<a href="{{ page.url }}">{{ page.title }}</a>
 				</li>
 				{%- endfor %}
 			</ul>
@@ -67,17 +99,17 @@
 	{%- if page.url == '/' %}
 	<section class="px-6 lg:px-10 py-5 mb-8 border-t border-b">
 		<div class="grid grid-cols-3 justify-around gap-6">
-			<article class="text-center">
-				<img src="assets/img/icon-expedition.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto opacity-70">Pengiriman cepat</p>
+			<article class="text-center group">
+				<img src="assets/img/icon-expedition.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
+				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Pengiriman cepat</p>
 			</article>
-			<article class="text-center">
-				<img src="assets/img/icon-secure.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto opacity-70">Transaksi aman dan nyaman</p>
+			<article class="text-center group">
+				<img src="assets/img/icon-secure.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
+				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Transaksi aman dan nyaman</p>
 			</article>
-			<article class="text-center">
-				<img src="assets/img/icon-24h.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto opacity-70">Layanan cepat 24 jam</p>
+			<article class="text-center group">
+				<img src="assets/img/icon-24h.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
+				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Layanan cepat 24 jam</p>
 			</article>
 		</div>
 	</section>

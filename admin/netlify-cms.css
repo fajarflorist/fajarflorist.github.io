@@ -129,20 +129,31 @@ header nav li > * {
 	transform: initial;
 }
 
-[for*="published-field"] {
+[for*="published-field"],
+[for*="navbar-field"] {
 	display: none;
 }
-[for*="published-field"] + div {
+[for*="published-field"] + div,
+[for*="navbar-field"] + div {
 	padding: 0;
 	border: none;
 	text-align: right;
 	padding-top: 20px;
 	padding-right: 70px;
 }
-[for*="published-field"] + div button:before {
-	content: 'Publikasi';
+[for*="published-field"] + div button:before,
+[for*="navbar-field"] + div button:before {
 	position: absolute;
 	left: 3rem;
+}
+[for*="published-field"] + div button:before {
+	content: 'Publikasi';
+}
+[for*="navbar-field"] + div button:before {
+	content: 'Tampilkan di navbar';
+}
+[for*="navbar-field"] + div button {
+	white-space: nowrap;
 }
 
 @media (max-width: 999px) {
@@ -301,4 +312,10 @@ header nav li > * {
 	[class*="ButtonsContainer"] > * {
 		margin-bottom: 1rem;
 	}
+}
+
+.navbar-switch {
+	position: absolute;
+	top: -20px;
+	z-index: 1;
 }

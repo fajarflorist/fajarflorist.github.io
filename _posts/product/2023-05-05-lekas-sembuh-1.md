@@ -9,10 +9,8 @@ attribute: Tanpa Atribut
 category: Lekas Sembuh
 thumbnail: /assets/upload/product/lekas-sembuh-bank-panin.jpeg
 tags:
-  - buket
-  - bunga
-  - lekas
-  - sembuh
+  - buket bunga
+  - bouquet
 date: 2023-05-05T15:11:43.240Z
 ---
 *Deskripsi produk...*
