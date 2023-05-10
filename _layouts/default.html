@@ -44,7 +44,7 @@
 			<div class="flex flex-col items-center min-h-full max-lg:overflow-x-hidden [&_header]:w-full [&_main]:w-full [&_footer]:w-full [&_footer]:mt-auto">
 
 <header>
-	<section class="px-6 lg:px-10 my-6 flex items-center justify-between flex-wrap">
+	<section class="max-w-6xl mx-auto px-6 lg:px-10 my-6 flex items-center justify-between flex-wrap">
 		<a href="{{ site.url }}" class="brand">
 			<img src="{{ '/assets/img/favicon.png' | relative_url }}" alt="logo" width="50" height="50" />
 			<span>{{ site.title }}</span>
@@ -56,7 +56,7 @@
 			<span class="sr-only !overflow-hidden">Menu</span>
 		</button>
 		<nav class="hidden md:block max-md:pb-[6.7rem] z-10 navbar">
-			<ul>
+			<ul class="capitalize">
 				<li class="navbar-dropdown">
 					<button type="button">Kategori</button>
 					<ul class="hidden">
@@ -71,7 +71,7 @@
 				</li>
 				<li class="navbar-dropdown">
 					<button type="button">Label</button>
-					<ul class="hidden capitalize">
+					<ul class="hidden">
 						{%- for tag in site.tags %}
 						<li>
 							<a href="/label/?q={{ tag | first | replace: ' ', '+' }}">
@@ -97,20 +97,22 @@
 
 <main>
 	{%- if page.url == '/' %}
-	<section class="px-6 lg:px-10 py-5 mb-8 border-t border-b">
-		<div class="grid grid-cols-3 justify-around gap-6">
-			<article class="text-center group">
-				<img src="assets/img/icon-expedition.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Pengiriman cepat</p>
-			</article>
-			<article class="text-center group">
-				<img src="assets/img/icon-secure.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Transaksi aman dan nyaman</p>
-			</article>
-			<article class="text-center group">
-				<img src="assets/img/icon-24h.png" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-blue" />
-				<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Layanan cepat 24 jam</p>
-			</article>
+	<section class="mb-8 border-t border-b">
+		<div class="max-w-6xl mx-auto px-6 lg:px-10 py-5">
+			<div class="grid grid-cols-3 justify-around gap-6">
+				<article class="text-center group">
+					<img src="{{ '/assets/img/icon-expedition.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Pengiriman cepat</p>
+				</article>
+				<article class="text-center group">
+					<img src="{{ '/assets/img/icon-secure.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Transaksi aman dan nyaman</p>
+				</article>
+				<article class="text-center group">
+					<img src="{{ '/assets/img/icon-24h.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Layanan cepat 24 jam</p>
+				</article>
+			</div>
 		</div>
 	</section>
 	{%- endif %}
@@ -119,7 +121,7 @@
 </main>
 
 <footer>
-	<section class="px-6 lg:px-10 my-6 text-sm text-center opacity-60">
+	<section class="px-6 lg:px-10 my-6 text-xs lg:text-sm text-center opacity-60">
 		{%- capture copyright -%}
 			{%- assign thisyear = site.time | date: '%Y' -%}
 			{%- if thisyear > '2023' -%}
@@ -131,6 +133,8 @@
 		Copyright &copy; {{ copyright }} <strong>{{ site.title }}</strong>.
 		<br class="md:hidden" />
 		All rights reserved.
+		<br class="max-md:hidden" />
+		Developed by <a href="https://degiam.github.io/" target="_blank" rel="noopener noreferrer" class="text-inherit hover:text-inherit underline">Degiam</a>
 	</section>
 </footer>
 

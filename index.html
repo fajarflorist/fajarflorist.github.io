@@ -3,7 +3,7 @@ layout: default
 ---
 
 	{%- if site.content_pages -%}
-	<section class="px-6 lg:px-10">
+	<section class="max-w-6xl px-6 lg:px-10">
 		<h2>Semua Laman</h2>
 		<div class="bg-zinc-100 p-5 rounded-lg my-5">
 			{%- for page in site.posts -%}
@@ -21,7 +21,7 @@ layout: default
 	{%- endif %}
 
 	{%- if site.content_blogs -%}
-	<section class="px-6 lg:px-10">
+	<section class="max-w-6xl px-6 lg:px-10">
 		<h2>Semua Blog</h2>
 		<div class="bg-zinc-100 p-5 rounded-lg my-5">
 			{%- for page in site.posts -%}
@@ -39,7 +39,7 @@ layout: default
 	{%- endif %}
 
 	{%- if site.content_products -%}
-	<section class="px-6 lg:px-10">
+	<section class="max-w-6xl mx-auto px-6 lg:px-10">
 		<div class="product">
 			{%- for page in site.posts -%}
 			{% if page.layout != 'product' %}

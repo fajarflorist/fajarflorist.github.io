@@ -10,10 +10,10 @@
 		--font-1: 'DM Sans', sans-serif;
 		/* --font-2: 'Kalam', cursive; */
 
-		--color-1: 53 147 255;	/* #3593ff - Blue */
-		--color-2: 32 123 227;	/* #207be3 - Dark Blue */
-		--color-3: 255 148 63;	/* #e97303 - Dark Orange */
-		--color-4: 255 148 63;	/* #e97303 - Dark Orange */
+		--color-1: 244 63 94;	/* #f43f5e - Red */
+		--color-2: 212 49 77;	/* #d4314d - Dark Red */
+		--color-3: 53 147 255;	/* #3593ff - Blue */
+		--color-4: 32 123 227;	/* #207be3 - Dark Blue */
 	}
 
 	* {
@@ -41,6 +41,10 @@
 		@apply font-theme-1 cursor-default text-black/80 dark:text-white transition-colors duration-100 break-words;
 		-webkit-print-color-adjust: exact;
 		print-color-adjust: exact;
+	}
+
+	header {
+		@apply bg-white dark:bg-zinc-900 z-[2];
 	}
 
 	a {
@@ -181,11 +185,18 @@
 		-ms-overflow-style: none;
 		scrollbar-width: none;
 	}
-	.swipe::-webkit-scrollbar {
+	.swipe::-webkit-scrollbar,
+	.slide::-webkit-scrollbar {
 		@apply hidden;
 	}
 	.swipe > * {
 		@apply snap-start whitespace-normal min-w-full;
+	}
+	.slide {
+		@apply snap-x snap-mandatory whitespace-nowrap md:whitespace-normal max-md:overflow-auto;
+	}
+	.slide > * {
+		@apply snap-start whitespace-normal;
 	}
 
 	.brand {
@@ -199,7 +210,7 @@
 	}
 
 	.product {
-		@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-6 gap-x-6 md:gap-x-8 xl:gap-x-12 gap-y-7 md:gap-y-9 xl:gap-y-14 pb-12;
+		@apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-6 md:gap-x-8 xl:gap-x-12 gap-y-7 md:gap-y-9 xl:gap-y-14 pb-12;
 	}
 	.product-item {
 		@apply relative flex flex-col border border-slate-100 shadow-xl md:shadow-2xl rounded-xl overflow-hidden hover:border-color-1 hover:outline outline-2 outline-color-1;
@@ -227,7 +238,7 @@
 	}
 
 	.product-image {
-		@apply max-lg:border-b lg:border lg:border-slate-100 lg:shadow-xl lg:rounded-xl lg:overflow-hidden;
+		@apply max-lg:border-t max-lg:border-b lg:border lg:border-slate-100 lg:shadow-xl lg:rounded-xl lg:overflow-hidden;
 	}
 	.product-image .slider {
 		@apply relative before:content-[''] before:absolute before:z-[1] before:w-full before:h-full before:cursor-zoom-in before:[&.allow-zoom]:-z-[1] before:[&.allow-zoom]:cursor-zoom-out;
@@ -251,7 +262,7 @@
 		@apply bg-slate-100 inline py-1 px-2 rounded-md text-xs [&_span]:font-bold;
 	}
 	.product-attribute span {
-		@apply bg-rose-500 text-white inline py-1 px-2 rounded-md text-xs font-bold uppercase tracking-widest;
+		@apply bg-color-3 text-white inline py-1 px-2 rounded-md text-xs font-bold uppercase tracking-widest;
 	}
 	.product-description {
 		@apply my-10;
@@ -279,8 +290,7 @@
 	}
 
 	/* https://codepen.io/sosuke/pen/Pjoqqp */
-	/* #1b7ddc */
-	.img-to-blue {
-		filter: invert(43%) sepia(83%) saturate(675%) hue-rotate(171deg) brightness(86%) contrast(99%);
+	.img-to-color-1 {
+		filter: invert(32%) sepia(27%) saturate(4735%) hue-rotate(326deg) brightness(105%) contrast(91%);
 	}
 }
