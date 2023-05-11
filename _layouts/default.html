@@ -17,9 +17,9 @@
 
 	<!-- Preload -->
 	<link rel="preload" as="style" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="style" href="{{ '/assets/css/tailwind.css?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="style" href="{{ '/assets/css/main.css?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="preload" as="script" href="{{ '/assets/js/main.js?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/tailwind.css?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="style" href="{{ '/assets/css/main.css?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="preload" as="script" href="{{ '/assets/js/main.js?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 	{%- if page.layout == 'product' %}
 	<link rel="preload" as="style" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
 	<link rel="preload" as="script" href="{{ '/assets/js/jquery.min.js' | relative_url }}" />
@@ -32,11 +32,11 @@
 	<link rel="stylesheet" href="{{ '/assets/css/splide.min.css' | relative_url }}" />
 	{%- endif %}
 	<link rel="stylesheet" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="stylesheet" href="{{ '/assets/css/tailwind.css?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
-	<link rel="stylesheet" href="{{ '/assets/css/main.css?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/tailwind.css?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
+	<link rel="stylesheet" href="{{ '/assets/css/main.css?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
 
 	<!-- Development -->
-	<link rel="stylesheet" href="{{ 'tailwind.css?dev=1.2' | relative_url }}" />
+	<link rel="stylesheet" href="{{ 'tailwind.css?dev=1.3' | relative_url }}" />
 </head>
 <body class="max-lg:fixed max-lg:w-screen max-lg:h-screen max-lg:overflow-hidden">
 	<div class="max-lg:h-screen max-lg:overflow-hidden">
@@ -144,7 +144,7 @@
 	<script src="{{ '/assets/js/splide.min.js' | relative_url }}"></script>
 	<script src="{{ '/assets/js/zoom.min.js' | relative_url }}"></script>
 	{%- endif %}
-	<script src="{{ '/assets/js/main.js?dev=1.2' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
+	<script src="{{ '/assets/js/main.js?dev=1.3' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
 
 	{%- include google_tag_manager.html %}
 </slot>
