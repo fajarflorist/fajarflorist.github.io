@@ -21,6 +21,9 @@ keywords: karangan, bunga, kembang, flower, florist, duka, suka, cita, berduka, 
 whatsapp_number: 628123456789
 whatsapp_chat: Halo%20kak...%0ASaya%20mau%20order%20
 
+# Phone number with country code, e.g. 628123456789
+phone_number: 628123456789
+
 # What collections do you want to show, value is true or false
 content_pages: false
 content_blogs: false
@@ -42,7 +45,7 @@ lang:
 tab_color: 
 
 # Step version of media assets with date (ISO 8601, UTC format) with quotes, e.g. "2023-12-31T23:59:59+07:00"
-version: 
+version: 1.0.0
 
 # Google Tag Manager web tracking code, e.g. G-TK69RB8KDF
 google_tag_manager: 

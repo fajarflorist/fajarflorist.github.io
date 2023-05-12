@@ -282,6 +282,22 @@
 	.product-cart-add {
 		@apply my-8 lg:my-6;
 	}
+
+	aside .backtop button {
+		@apply bg-transparent hover:bg-transparent shadow-none text-inherit hover:text-inherit [&.active]:text-color-1;
+	}
+	aside .mobile .backtop {
+		@apply absolute -right-14 w-10 h-10 border-l border-black/40 transition-all;
+	}
+	html.scroll aside .mobile {
+		@apply pr-20 [&_.backtop]:right-5;
+	}
+	aside .desktop .backtop {
+		@apply absolute bottom-[3px] -right-14 w-10 h-10 transition-all;
+	}
+	html.scroll aside .desktop {
+		@apply pr-10 [&_.backtop]:-right-2;
+	}
 }
 
 @layer utilities {
