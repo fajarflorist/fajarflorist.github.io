@@ -1189,6 +1189,41 @@ select {
 			background-color: hsl(200, 10%, 45%);
 		}
 	}
+.label {
+  margin-bottom: 0.5rem;
+  display: inline-block;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+}
+.input {
+  display: block;
+  width: 100%;
+  border-radius: 0.5rem;
+  border-width: 1px;
+  --tw-border-opacity: 1;
+  border-color: rgb(226 232 240 / var(--tw-border-opacity));
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.input::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-placeholder-opacity));
+}
+.input::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(148 163 184 / var(--tw-placeholder-opacity));
+}
+.input:focus {
+  --tw-border-opacity: 1;
+  border-color: rgb(var(--color-1) / var(--tw-border-opacity));
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(var(--color-1) / var(--tw-ring-opacity));
+}
 .button {
   display: flex;
   height: 100%;
@@ -1977,6 +2012,12 @@ html.scroll aside .desktop .backtop {
 .fixed {
   position: fixed;
 }
+.absolute {
+  position: absolute;
+}
+.relative {
+  position: relative;
+}
 .sticky {
   position: sticky;
 }
@@ -1988,6 +2029,12 @@ html.scroll aside .desktop .backtop {
 }
 .right-0 {
   right: 0px;
+}
+.right-3 {
+  right: 0.75rem;
+}
+.top-0 {
+  top: 0px;
 }
 .top-4 {
   top: 1rem;
@@ -2008,6 +2055,10 @@ html.scroll aside .desktop .backtop {
 .my-1 {
   margin-top: 0.25rem;
   margin-bottom: 0.25rem;
+}
+.my-10 {
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
 }
 .my-4 {
   margin-top: 1rem;
@@ -2067,6 +2118,12 @@ html.scroll aside .desktop .backtop {
 .mt-auto {
   margin-top: auto;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
 .line-clamp-2 {
   overflow: hidden;
   display: -webkit-box;
@@ -2091,6 +2148,9 @@ html.scroll aside .desktop .backtop {
 .hidden {
   display: none;
 }
+.h-16 {
+  height: 4rem;
+}
 .h-4 {
   height: 1rem;
 }
@@ -2099,6 +2159,9 @@ html.scroll aside .desktop .backtop {
 }
 .h-6 {
   height: 1.5rem;
+}
+.h-auto {
+  height: auto;
 }
 .h-full {
   height: 100%;
@@ -2120,6 +2183,9 @@ html.scroll aside .desktop .backtop {
 }
 .w-6 {
   width: 1.5rem;
+}
+.w-auto {
+  width: auto;
 }
 .w-fit {
   width: -moz-fit-content;
@@ -2174,6 +2240,9 @@ html.scroll aside .desktop .backtop {
 .rounded-lg {
   border-radius: 0.5rem;
 }
+.rounded-xl {
+  border-radius: 0.75rem;
+}
 .border-b {
   border-bottom-width: 1px;
 }
@@ -2225,6 +2294,14 @@ html.scroll aside .desktop .backtop {
 .p-6 {
   padding: 1.5rem;
 }
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
@@ -2248,6 +2325,12 @@ html.scroll aside .desktop .backtop {
 .py-6 {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+}
+.pl-6 {
+  padding-left: 1.5rem;
+}
+.pr-20 {
+  padding-right: 5rem;
 }
 .text-center {
   text-align: center;
@@ -2291,6 +2374,11 @@ html.scroll aside .desktop .backtop {
 }
 .opacity-60 {
   opacity: 0.6;
+}
+.shadow-xl {
+  --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --tw-shadow-colored: 0 20px 25px -5px var(--tw-shadow-color), 0 8px 10px -6px var(--tw-shadow-color);
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .grayscale {
   --tw-grayscale: grayscale(100%);

@@ -125,6 +125,13 @@
 		}
 	}
 
+	.label {
+		@apply inline-block text-sm uppercase tracking-widest mb-2 opacity-50;
+	}
+	.input {
+		@apply block w-full rounded-lg py-3 px-4 border border-slate-200 focus:border-color-1 focus:ring-color-1 placeholder-slate-400;
+	}
+
 	.button {
 		@apply flex justify-center no-underline w-full h-full rounded-lg shadow-xl py-3 px-4 md:px-6 font-medium text-white hover:text-white bg-color-1 hover:bg-color-2 focus-visible:outline-none disabled:pointer-events-none disabled:text-zinc-400 disabled:bg-zinc-200 disabled:hover:bg-zinc-200 [&.disabled]:pointer-events-none [&.disabled]:text-zinc-400 [&.disabled]:bg-zinc-200 [&.disabled]:hover:bg-zinc-200;
 	}

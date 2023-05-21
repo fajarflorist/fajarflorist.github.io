@@ -154,6 +154,35 @@
 	filterProduct('/kategori/','?q=','data-category')
 	filterProduct('/label/','?q=','data-tag')
 
+// Search
+	function search(path,params,selector) {
+		let url = window.location.href
+		if ( url.indexOf(path) > -1 ) {
+			if ( url.indexOf(params) > -1 ) {
+				document.querySelectorAll('.result').forEach(item => {
+					item.classList.remove('hidden')
+				})
+				let query = url.split(params)
+				document.querySelectorAll('#search-input').forEach(item => {
+					item.value = query[1].replace(/[+]/g,' ')
+				})
+			} else {
+				document.querySelectorAll('.empty').forEach(item => {
+					item.classList.remove('hidden')
+				})
+			}
+		} else {
+			document.querySelectorAll(selector).forEach(item => {
+				item.addEventListener('submit', (e) => {
+					e.preventDefault()
+					let query = item.querySelector('input').value.replace(/[ ]/g,'+')
+					window.location.href = path + params + query
+				})
+			})
+		}
+	}
+	search('/cari/','?q=','.search')
+
 // Product Slider
 	for (let i=0; i<document.getElementsByClassName('splide').length; i++) {
 		new Splide('.splide', {

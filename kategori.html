@@ -5,103 +5,103 @@ permalink: /kategori/
 ---
 
 <section class="max-w-6xl mx-auto px-6 lg:px-10">
-	<div class="empty my-6 hidden">
-		<div class="text-2xl font-bold mb-6">Semua Kategori</div>
-		<ul>
-			{%- for category in site.categories %}
-			<li class="my-4">
-				<a href="/kategori/?q={{ category | first | replace: ' ', '+' }}" class="text-inherit">
-					— &nbsp; {{ category | first }}
-				</a>
-			</li>
-			{%- endfor %}
-		</ul>
-	</div>
-{%- for category in site.categories %}
-	{%- capture category_name -%}
-		{{ category | first }}
-	{%- endcapture -%}
-	<div data-category="{{ category_name }}" class="hidden">
-		<div class="my-8">
-			<div class="text-sm opacity-50 mb-2">{{ site.categories[category_name].size }} produk pada kategori</div>
-			<h2 class="text-2xl">{{ category_name }}</h2>
+		<div class="empty my-6 hidden">
+			<div class="text-2xl font-bold mb-6">Semua Kategori</div>
+			<ul>
+				{%- for category in site.categories %}
+				<li class="my-4">
+					<a href="/kategori/?q={{ category | first | replace: ' ', '+' }}" class="text-inherit">
+						— &nbsp; {{ category | first }}
+					</a>
+				</li>
+				{%- endfor %}
+			</ul>
 		</div>
-		<div class="product">
-			{% for page in site.categories[category_name] %}
-			<article class="product-item">
-				{%- if page.thumbnail %}
-				<a class="block border-b border-slate-100 {% if page.stock == 'Stok Habis' %}grayscale{% endif %}" href="{{ page.url }}">
-					<picture class="block skeleton">
-						<img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="w-full h-full object-cover aspect-square" width="600" height="600" loading="lazy" onload="this.closest('.skeleton').classList.remove('skeleton')" />
-					</picture>
-				</a>
-				{%- endif %}
+	{%- for category in site.categories %}
+		{%- capture category_name -%}
+			{{ category | first }}
+		{%- endcapture %}
+		<div data-category="{{ category_name }}" class="hidden">
+			<div class="my-8">
+				<div class="text-sm opacity-50 mb-2">{{ site.categories[category_name].size }} produk pada kategori</div>
+				<h2 class="text-2xl">{{ category_name }}</h2>
+			</div>
+			<div class="product">
+				{% for page in site.categories[category_name] %}
+				<article class="product-item">
+					{%- if page.thumbnail %}
+					<a class="block border-b border-slate-100 {% if page.stock == 'Stok Habis' %}grayscale{% endif %}" href="{{ page.url }}">
+						<picture class="block skeleton">
+							<img src="{{ page.thumbnail }}" alt="{{ page.title }}" class="w-full h-full object-cover aspect-square" width="600" height="600" loading="lazy" onload="this.closest('.skeleton').classList.remove('skeleton')" />
+						</picture>
+					</a>
+					{%- endif %}
 
-				<div class="product-body">
-					<a class="block mb-3" href="{{ page.url }}">
-						{%- if page.attribute != "Tanpa Atribut" %}
-						<div class="product-attribute mb-2 md:mb-3">
-							<span>{{ page.attribute }}</span>
-						</div>
-						{%- endif %}
+					<div class="product-body">
+						<a class="block mb-3" href="{{ page.url }}">
+							{%- if page.attribute != "Tanpa Atribut" %}
+							<div class="product-attribute mb-2 md:mb-3">
+								<span>{{ page.attribute }}</span>
+							</div>
+							{%- endif %}
 
-						<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
+							<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
 
-						{% if page.price -%}
-						<div class="product-price my-1">
-							{%- if page.price.promo %}
-								{%- if page.price.promo != "" %}
-									{%- assign regular = page.price.regular | remove: "." %}
-									{%- assign promo = page.price.promo | remove: "." %}
+							{% if page.price -%}
+							<div class="product-price my-1">
+								{%- if page.price.promo %}
+									{%- if page.price.promo != "" %}
+										{%- assign regular = page.price.regular | remove: "." %}
+										{%- assign promo = page.price.promo | remove: "." %}
 
-									{%- assign price_promo = promo %}
-									<div class="current">
-										Rp <span class="currency">{{ price_promo }}</span>
-									</div>
+										{%- assign price_promo = promo %}
+										<div class="current">
+											Rp <span class="currency">{{ price_promo }}</span>
+										</div>
 
-									{%- assign price_regular = regular %}
-									<div class="line-through past -ml-1">
-										&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
-									</div>
+										{%- assign price_regular = regular %}
+										<div class="line-through past -ml-1">
+											&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+										</div>
 
-									{%- assign float_regular = regular | times: 1.0 %}
-									{%- assign float_promo = promo | times: 1.0 %}
-									{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
-									{%- assign decimal_split = decimal | split: '.' %}
-									{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
-									{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+										{%- assign float_regular = regular | times: 1.0 %}
+										{%- assign float_promo = promo | times: 1.0 %}
+										{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+										{%- assign decimal_split = decimal | split: '.' %}
+										{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+										{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
 
-									{%- if decimal_split[1] == "0" %}
-										{%- assign discount = fix_decimal_split %}
-									{%- else %}
-										{%- if decimal_split[1].size <= 2 %}
-											{%- assign discount = fix_decimal %}
+										{%- if decimal_split[1] == "0" %}
+											{%- assign discount = fix_decimal_split %}
 										{%- else %}
-											{%- assign discount = fix_decimal | round: 2 %}
+											{%- if decimal_split[1].size <= 2 %}
+												{%- assign discount = fix_decimal %}
+											{%- else %}
+												{%- assign discount = fix_decimal | round: 2 %}
+											{%- endif %}
 										{%- endif %}
-									{%- endif %}
 
-									<div class="discount">
-										Diskon <span>{{ discount }}%</span>
+										<div class="discount">
+											Diskon <span>{{ discount }}%</span>
+										</div>
+									{%- endif %}
+								{%- else %}
+									{%- assign regular = page.price.regular | remove: "." %}
+									{%- assign price_regular = regular %}
+									<div class="current">
+										Rp <span class="currency">{{ price_regular }}</span>
 									</div>
 								{%- endif %}
-							{%- else %}
-								{%- assign regular = page.price.regular | remove: "." %}
-								{%- assign price_regular = regular %}
-								<div class="current">
-									Rp <span class="currency">{{ price_regular }}</span>
-								</div>
-							{%- endif %}
-						</div>
-						{% endif -%}
-					</a>
-					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
-						Pesan Sekarang
-					</button>
-				</div>
-			</article>
-			{% endfor %}
+							</div>
+							{% endif -%}
+						</a>
+						<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
+							Pesan Sekarang
+						</button>
+					</div>
+				</article>
+				{% endfor %}
+			</div>
 		</div>
-	</div>
-{%- endfor %}
-</section>
+	{%- endfor %}
+	</section>
