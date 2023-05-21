@@ -4,7 +4,19 @@ title: Label
 permalink: /label/
 ---
 
-<section class="px-6 lg:px-10">
+<section class="max-w-6xl mx-auto px-6 lg:px-10">
+	<div class="empty my-6 hidden">
+		<div class="text-2xl font-bold mb-6">Semua Label</div>
+		<ul>
+			{%- for tag in site.tags %}
+			<li class="my-4">
+				<a href="/label/?q={{ tag | first | replace: ' ', '+' }}" class="text-inherit">
+					— &nbsp; {{ tag | first }}
+				</a>
+			</li>
+			{%- endfor %}
+		</ul>
+	</div>
 {% for tag in site.tags %}
 	{%- capture tag_name -%}
 		{{ tag | first }}

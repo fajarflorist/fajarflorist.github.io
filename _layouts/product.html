@@ -179,10 +179,17 @@ layout: default
 			{%- endif %}
 
 			<article class="product-cart-add lg:hidden">
-				<div class="fixed right-0 left-0 bottom-0 px-6 py-4 lg:py-6 z-[1] bg-white/50 backdrop-blur">
+				<div class="fixed right-0 left-0 bottom-0 px-6 py-4 lg:py-6 z-[1] bg-white/50 backdrop-blur transition-all">
 					<button type="button" class="button max-lg:max-w-lg mx-auto" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
 						Pesan Sekarang
 					</button>
+					<div class="backtop">
+						<button type="button" class="button items-center p-2.5 mr-2">
+							<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4">
+								<path stroke-linecap="round" stroke-linejoin="round" d="M4.5 10.5L12 3m0 0l7.5 7.5M12 3v18" />
+							</svg>
+						</button>
+					</div>
 				</div>
 			</article>
 		</div>

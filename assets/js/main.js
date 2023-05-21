@@ -136,17 +136,23 @@
 	pagin('#paginator')
 
 // Categories & Tags
-	function filterProduct(path,attr) {
+	function filterProduct(path,params,attr) {
 		let url = window.location.href
 		if ( url.indexOf(path) > -1 ) {
-			let query = url.split('?q=')
-			document.querySelectorAll('[' + attr + '="' + query[1].replace(/[+]/g,' ') + '"]').forEach(item => {
-				item.classList.remove('hidden')
-			})
+			if ( url.indexOf(params) > -1 ) {
+				let query = url.split(params)
+				document.querySelectorAll('[' + attr + '="' + query[1].replace(/[+]/g,' ') + '"]').forEach(item => {
+					item.classList.remove('hidden')
+				})
+			} else {
+				document.querySelectorAll('.empty').forEach(item => {
+					item.classList.remove('hidden')
+				})
+			}
 		}
 	}
-	filterProduct('/kategori/?q=','data-category')
-	filterProduct('/label/?q=','data-tag')
+	filterProduct('/kategori/','?q=','data-category')
+	filterProduct('/label/','?q=','data-tag')
 
 // Product Slider
 	for (let i=0; i<document.getElementsByClassName('splide').length; i++) {

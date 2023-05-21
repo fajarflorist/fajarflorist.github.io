@@ -124,45 +124,45 @@ layout: default
 			<form>
 				<label for="paginator" class="sr-only">Pagination</label>
 				<select id="paginator">
-					{% for page in (1..paginator.total_pages) %}
-						{% if page == paginator.page %}
-							<option selected>{{ page }}</option>
-						{% elsif page == 1 %}
-							<option value="{{ '/' | relative_url }}">{{ page }}</option>
-						{% else %}
-							<option value="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</option>
-						{% endif %}
-					{% endfor %}
+					{%- for page in (1..paginator.total_pages) %}
+					{%- if page == paginator.page %}
+					<option selected>{{ page }}</option>
+					{%- elsif page == 1 %}
+					<option value="{{ '/' | relative_url }}">{{ page }}</option>
+					{%- else %}
+					<option value="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</option>
+					{%- endif %}
+					{%- endfor %}
 				</select>
 			</form>
 			<div class="flex items-center gap-2">
-				{% if paginator.previous_page %}
+				{%- if paginator.previous_page %}
 				<a href="{{ paginator.previous_page_path }}">
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
 					</svg>
 				</a>
-				{% else %}
+				{%- else %}
 				<span>
 					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
 						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
 					</svg>
 				</span>
-				{% endif %}
+				{%- endif %}
 
-				{% if paginator.next_page %}
-					<a href="{{ paginator.next_page_path }}">
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</a>
-				{% else %}
-					<span>
-						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
-							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
-						</svg>
-					</span>
-				{% endif %}
+				{%- if paginator.next_page %}
+				<a href="{{ paginator.next_page_path }}">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+					</svg>
+				</a>
+				{%- else %}
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+					</svg>
+				</span>
+				{%- endif %}
 			</div>
 		</div>
 	</section>

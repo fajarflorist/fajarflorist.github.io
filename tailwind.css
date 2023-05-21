@@ -133,7 +133,7 @@
 	}
 
 	.navbar {
-		@apply md:text-sm max-md:overflow-y-auto max-md:w-full max-md:h-[calc(100vh-82px)] max-md:mt-4;
+		@apply md:text-sm max-md:overflow-x-hidden max-md:overflow-y-auto max-md:w-full max-md:h-[calc(100vh-82px)] max-md:mt-4;
 	}
 	.navbar > ul > li > ul {
 		@apply max-md:pl-3;
@@ -283,13 +283,19 @@
 		@apply my-8 lg:my-6;
 	}
 
-	aside .backtop button {
+	aside .backtop button,
+	.product-cart-add .backtop button {
 		@apply bg-transparent hover:bg-transparent shadow-none text-inherit hover:text-inherit [&.active]:text-color-1;
 	}
-	aside .mobile .backtop {
+	aside .mobile .backtop,
+	.product-cart-add .backtop {
 		@apply absolute -right-14 w-10 h-10 transition-all;
 	}
-	html.scroll aside .mobile {
+	.product-cart-add .backtop {
+		@apply bottom-5;
+	}
+	html.scroll aside .mobile,
+	html.scroll .product-cart-add > div {
 		@apply pr-16 [&_.backtop]:right-4;
 	}
 	aside .desktop .backtop {
