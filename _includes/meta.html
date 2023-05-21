@@ -42,9 +42,15 @@
 	{%- endif %}
 
 	{%- if page.url != '/' %}
+	{%- if page.url contains '404' or page.url contains 'kategori' or page.url contains 'label' or page.url contains 'cari' %}
+	<meta name="description" content="{{ page.description }}" />
+	<meta property="og:description" content="{{ page.description }}" />
+	<meta name="twitter:description" content="{{ page.description }}" />
+	{%- else %}
 	<meta name="description" content="{{ page.content | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip_html | replace: '  ', ' ' | strip | truncatewords: 30 }}" />
 	<meta property="og:description" content="{{ page.content | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip_html | replace: '  ', ' ' | strip | truncatewords: 30 }}" />
 	<meta name="twitter:description" content="{{ page.content | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip_html | replace: '  ', ' ' | strip | truncatewords: 30 }}" />
+	{%- endif %}
 	{%- else %}
 	<meta name="description" content="{{ site.description }}" />
 	<meta property="og:description" content="{{ site.description }}" />

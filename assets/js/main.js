@@ -155,22 +155,86 @@
 	filterProduct('/label/','?q=','data-tag')
 
 // Search
-	function search(path,params,selector) {
+	function sjs() {
+		let searchKeyword = document.querySelector('#search-input')
+			searchResult = document.querySelector('.result')
+			searchProduct = '/assets/json/product.json'
+			searchNotFound = ''
+			searchTemplate = `<article class="product-item">
+			<a class="block border-b border-slate-100 {stock}" href="{url}">
+				<picture class="block skeleton">
+					<img src="{thumbnail}" alt="{title}" class="w-full h-full object-cover aspect-square" width="600" height="600" loading="lazy" onload="this.closest('.skeleton').classList.remove('skeleton')" />
+				</picture>
+			</a>
+			<a class="product-body" href="{url}">
+				<div class="product-attribute mb-2 md:mb-3 {attributeHide}">
+					<span>{attribute}</span>
+				</div>
+				<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{title}</h3>
+				<div class="product-price my-1">
+					<div class="current">
+						Rp <span class="currency">{priceCurrent}</span>
+					</div>
+					<div class="line-through past -ml-1 {priceHide}">
+						&nbsp;Rp <span class="currency">{pricePast}</span>&nbsp;
+					</div>
+					<div class="discount {priceHide}">
+						Diskon <span>{priceDiscount}%</span>
+					</div>
+				</div>
+				<div class="mt-auto">
+					<button type="button" class="button mt-3 mb-0">Pesan</button>
+				</div>
+			</a>
+		</article>`
+
+		let sjs = SimpleJekyllSearch({
+			searchInput: searchKeyword,
+			resultsContainer: searchResult,
+			json: searchProduct,
+			searchResultTemplate: searchTemplate,
+			noResultsText: searchNotFound
+		})
+
+		return sjs
+	}
+
+	function searchCounter(selector) {
+		document.querySelectorAll(selector).forEach(item => {
+			item.querySelector('span').innerText = document.querySelectorAll('.product article').length
+		})
+	}
+
+	function searchForm(path,params,selector) {
 		let url = window.location.href
 		if ( url.indexOf(path) > -1 ) {
 			if ( url.indexOf(params) > -1 ) {
-				document.querySelectorAll('.result').forEach(item => {
-					item.classList.remove('hidden')
-				})
 				let query = url.split(params)
 				document.querySelectorAll('#search-input').forEach(item => {
 					item.value = query[1].replace(/[+]/g,' ')
-				})
-			} else {
-				document.querySelectorAll('.empty').forEach(item => {
-					item.classList.remove('hidden')
+					let search = sjs()
+					setTimeout(() => {
+						search.search(item.value)
+						price('.currency')
+						searchCounter('.result-counter')
+						document.querySelector('.result-counter').classList.remove('hidden')
+					},100)
 				})
 			}
+			document.querySelectorAll(selector).forEach(item => {
+				item.addEventListener('submit', (e) => {
+					e.preventDefault()
+				})
+				item.querySelector('input').addEventListener('keyup', (e) => {
+					searchCounter('.result-counter')
+					let counter = document.querySelector('.result-counter')
+					if ( e.target.value != '' ) {
+						counter.classList.remove('hidden')
+					} else {
+						counter.classList.add('hidden')
+					}
+				})
+			})
 		} else {
 			document.querySelectorAll(selector).forEach(item => {
 				item.addEventListener('submit', (e) => {
@@ -180,8 +244,26 @@
 				})
 			})
 		}
+		document.querySelectorAll('.result').forEach(() => {
+			sjs()
+			price('.currency')
+		})
 	}
-	search('/cari/','?q=','.search')
+	searchForm('/cari/','?q=','.search')
+
+	function searchNavbar(trigger,target,url) {
+		document.querySelectorAll(trigger).forEach(item => {
+			item.addEventListener('click', () => {
+				let input = document.querySelector(target)
+				if ( input ) {
+					input.focus()
+				} else {
+					window.location.href = url
+				}
+			})
+		})
+	}
+	searchNavbar('.navbar-search','#search-input','/cari/')
 
 // Product Slider
 	for (let i=0; i<document.getElementsByClassName('splide').length; i++) {
@@ -203,10 +285,13 @@
 		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')
 	}
 
-	document.querySelectorAll('.currency').forEach(item => {
-		let currency = numberWithCommas(item.innerHTML)
-		item.innerHTML = currency
-	})
+	function price(selector) {
+		document.querySelectorAll(selector).forEach(item => {
+			let currency = numberWithCommas(item.innerHTML)
+			item.innerHTML = currency
+		})
+	}
+	price('.currency')
 
 // Product Order
 	function order(number,chat,product,url) {

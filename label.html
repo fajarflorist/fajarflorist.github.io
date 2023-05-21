@@ -1,10 +1,13 @@
 ---
 layout: default
 title: Label
+description: Cari produk pilihanmu sesuai labelnya
 permalink: /label/
 ---
 
 <section class="max-w-6xl mx-auto px-6 lg:px-10">
+		<h1 class="sr-only">{{ page.title }}</h1>
+
 		<div class="empty my-6 hidden">
 			<div class="text-2xl font-bold mb-6">Semua Label</div>
 			<ul>
@@ -24,7 +27,11 @@ permalink: /label/
 		<div data-tag="{{ tag_name }}" class="hidden">
 			<div class="my-8">
 				<div class="text-sm opacity-50 mb-2">{{ site.tags[tag_name].size }} produk dengan label</div>
-				<h2 class="text-2xl capitalize">{{ tag_name }}</h2>
+				<h2 class="text-2xl">
+					{%- assign tag1 = tag_name | slice: 0 | upcase -%}
+					{%- assign tag2 = tag_name | slice: 1, tag_name.size -%}
+					{{- tag2 | prepend: tag1 -}}
+				</h2>
 			</div>
 			<div class="product">
 				{% for page in site.tags[tag_name] %}
@@ -37,71 +44,74 @@ permalink: /label/
 					</a>
 					{%- endif %}
 
-					<div class="product-body">
-						<a class="block mb-3" href="{{ page.url }}">
-							{%- if page.attribute != "Tanpa Atribut" %}
-							<div class="product-attribute mb-2 md:mb-3">
-								<span>{{ page.attribute }}</span>
-							</div>
-							{%- endif %}
+					<a class="product-body" href="{{ page.url }}">
+						{%- if page.attribute != "Tanpa Atribut" %}
+						<div class="product-attribute mb-2 md:mb-3">
+							<span>{{ page.attribute }}</span>
+						</div>
+						{%- endif %}
 
-							<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
+						<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
 
-							{% if page.price -%}
-							<div class="product-price my-1">
-								{%- if page.price.promo %}
-									{%- if page.price.promo != "" %}
-										{%- assign regular = page.price.regular | remove: "." %}
-										{%- assign promo = page.price.promo | remove: "." %}
-
-										{%- assign price_promo = promo %}
-										<div class="current">
-											Rp <span class="currency">{{ price_promo }}</span>
-										</div>
-
-										{%- assign price_regular = regular %}
-										<div class="line-through past -ml-1">
-											&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
-										</div>
-
-										{%- assign float_regular = regular | times: 1.0 %}
-										{%- assign float_promo = promo | times: 1.0 %}
-										{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
-										{%- assign decimal_split = decimal | split: '.' %}
-										{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
-										{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
-
-										{%- if decimal_split[1] == "0" %}
-											{%- assign discount = fix_decimal_split %}
-										{%- else %}
-											{%- if decimal_split[1].size <= 2 %}
-												{%- assign discount = fix_decimal %}
-											{%- else %}
-												{%- assign discount = fix_decimal | round: 2 %}
-											{%- endif %}
-										{%- endif %}
-
-										<div class="discount">
-											Diskon <span>{{ discount }}%</span>
-										</div>
-									{%- endif %}
-								{%- else %}
+						{% if page.price -%}
+						<div class="product-price my-1">
+							{%- if page.price.promo %}
+								{%- if page.price.promo != "" %}
 									{%- assign regular = page.price.regular | remove: "." %}
-									{%- assign price_regular = regular %}
+									{%- assign promo = page.price.promo | remove: "." %}
+
+									{%- assign price_promo = promo %}
 									<div class="current">
-										Rp <span class="currency">{{ price_regular }}</span>
+										Rp <span class="currency">{{ price_promo }}</span>
+									</div>
+
+									{%- assign price_regular = regular %}
+									<div class="line-through past -ml-1">
+										&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+									</div>
+
+									{%- assign float_regular = regular | times: 1.0 %}
+									{%- assign float_promo = promo | times: 1.0 %}
+									{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+									{%- assign decimal_split = decimal | split: '.' %}
+									{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+									{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+
+									{%- if decimal_split[1] == "0" %}
+										{%- assign discount = fix_decimal_split %}
+									{%- else %}
+										{%- if decimal_split[1].size <= 2 %}
+											{%- assign discount = fix_decimal %}
+										{%- else %}
+											{%- assign discount = fix_decimal | round: 2 %}
+										{%- endif %}
+									{%- endif %}
+
+									<div class="discount">
+										Diskon <span>{{ discount }}%</span>
 									</div>
 								{%- endif %}
-							</div>
-							{% endif -%}
-						</a>
-						<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
-							Pesan Sekarang
-						</button>
-					</div>
+							{%- else %}
+								{%- assign regular = page.price.regular | remove: "." %}
+								{%- assign price_regular = regular %}
+								<div class="current">
+									Rp <span class="currency">{{ price_regular }}</span>
+								</div>
+							{%- endif %}
+						</div>
+						{% endif -%}
+
+						<div class="mt-auto">
+							<button type="button" class="button mt-3 mb-0">Pesan</button>
+						</div>
+					</a>
 				</article>
 				{% endfor %}
 			</div>
 		</div>
 	{% endfor %}
+
+		<div class="lg:hidden">
+			<a href="{{ site.url }}" class="button alt sm:w-fit sm:px-6 mx-auto">Lihat semua produk</a>
+		</div>
 	</section>

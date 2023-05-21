@@ -548,8 +548,8 @@ select {
 
 		--color-1: 244 63 94;	/* #f43f5e - Red */
 		--color-2: 212 49 77;	/* #d4314d - Dark Red */
-		--color-3: 53 147 255;	/* #3593ff - Blue */
-		--color-4: 32 123 227;	/* #207be3 - Dark Blue */
+		--color-3: 63 62 62;	/* #3f3e3e - Black */
+		--color-4: 46 45 45;	/* #2e2d2d - Dark Black */
 	}
 
 	* {
@@ -2091,6 +2091,9 @@ html.scroll aside .desktop .backtop {
 .mb-0 {
   margin-bottom: 0px;
 }
+.mb-10 {
+  margin-bottom: 2.5rem;
+}
 .mb-2 {
   margin-bottom: 0.5rem;
 }
@@ -2115,14 +2118,11 @@ html.scroll aside .desktop .backtop {
 .mt-3 {
   margin-top: 0.75rem;
 }
+.mt-6 {
+  margin-top: 1.5rem;
+}
 .mt-auto {
   margin-top: auto;
-}
-.mb-10 {
-  margin-bottom: 2.5rem;
-}
-.mt-5 {
-  margin-top: 1.25rem;
 }
 .line-clamp-2 {
   overflow: hidden;
@@ -2147,6 +2147,9 @@ html.scroll aside .desktop .backtop {
 }
 .hidden {
   display: none;
+}
+.\!hidden {
+  display: none !important;
 }
 .h-16 {
   height: 4rem;
@@ -2220,6 +2223,9 @@ html.scroll aside .desktop .backtop {
 }
 .gap-2 {
   gap: 0.5rem;
+}
+.gap-4 {
+  gap: 1rem;
 }
 .gap-5 {
   gap: 1.25rem;
@@ -2374,6 +2380,14 @@ html.scroll aside .desktop .backtop {
 }
 .opacity-60 {
   opacity: 0.6;
+}
+.opacity-70 {
+  opacity: 0.7;
+}
+.shadow-none {
+  --tw-shadow: 0 0 #0000;
+  --tw-shadow-colored: 0 0 #0000;
+  box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
 }
 .shadow-xl {
   --tw-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
@@ -2559,6 +2573,11 @@ html.scroll aside .desktop .backtop {
     margin-bottom: 1.5rem;
   }
 
+  .sm\:w-fit {
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+
   .sm\:p-1 {
     padding: 0.25rem;
   }
@@ -2585,12 +2604,28 @@ html.scroll aside .desktop .backtop {
 
 @media (min-width: 768px) {
 
+  .md\:order-2 {
+    order: 2;
+  }
+
+  .md\:order-3 {
+    order: 3;
+  }
+
   .md\:m-0 {
     margin: 0px;
   }
 
   .md\:mb-3 {
     margin-bottom: 0.75rem;
+  }
+
+  .md\:ml-4 {
+    margin-left: 1rem;
+  }
+
+  .md\:ml-auto {
+    margin-left: auto;
   }
 
   .md\:mr-1 {
