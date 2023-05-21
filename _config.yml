@@ -33,6 +33,11 @@ content_products: true
 # Optional Configs
 #----------------------------
 
+# Display posts on home
+# Pagination path url, e.g. /product/:num/
+paginate: 12
+paginate_path: /produk/:num/
+
 # Subpath of your site, e.g. /blog
 baseurl: 
 
@@ -61,6 +66,7 @@ permalink: /:title/
 plugins:
   - jekyll-postcss
   - jekyll-sitemap
+  - jekyll-paginate
 
 # Set the Sass partials directory, as we're using @imports
 sass:

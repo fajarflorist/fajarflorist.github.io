@@ -1,5 +1,6 @@
 ---
 layout: page
+hidden: true
 navbar: false
 published: true
 title: Hubungi kami

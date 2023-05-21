@@ -30,6 +30,7 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "Template", name: "layout", widget: "hidden", default: "page"}
+      - {label: "Pagination", name: "hidden", widget: "hidden", default: true}
       - {label: "Tampilkan di Navbar", name: "navbar", widget: "boolean", default: true}
       - {label: "Publikasi", name: "published", widget: "boolean", default: true}
       - {label: "Judul", name: "title", widget: "string"}
@@ -45,6 +46,7 @@ collections:
   #   slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
   #   fields:
   #     - {label: "Template", name: "layout", widget: "hidden", default: "blog"}
+  #     - {label: "Pagination", name: "hidden", widget: "hidden", default: true}
   #     - {label: "Publikasi", name: "published", widget: "boolean", default: true}
   #     - {label: "Judul", name: "title", widget: "string"}
   #     - {label: "Thumbnail", name: "thumbnail", widget: "image"}

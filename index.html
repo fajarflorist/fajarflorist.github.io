@@ -41,7 +41,7 @@ layout: default
 	{%- if site.content_products -%}
 	<section class="max-w-6xl mx-auto px-6 lg:px-10">
 		<div class="product">
-			{%- for page in site.posts -%}
+			{%- for page in paginator.posts -%}
 			{% if page.layout != 'product' %}
 				{% continue %}
 			{% endif %}
@@ -55,70 +55,115 @@ layout: default
 				</a>
 				{%- endif %}
 
-				<div class="product-body">
-					<a class="block mb-3" href="{{ page.url }}">
-						{%- if page.attribute != "Tanpa Atribut" %}
-						<div class="product-attribute mb-2 md:mb-3">
-							<span>{{ page.attribute }}</span>
-						</div>
-						{%- endif %}
+				<a class="product-body" href="{{ page.url }}">
+					{%- if page.attribute != "Tanpa Atribut" %}
+					<div class="product-attribute mb-2 md:mb-3">
+						<span>{{ page.attribute }}</span>
+					</div>
+					{%- endif %}
 
-						<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
+					<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
 
-						{% if page.price -%}
-						<div class="product-price my-1">
-							{%- if page.price.promo %}
-								{%- if page.price.promo != "" %}
-									{%- assign regular = page.price.regular | remove: "." %}
-									{%- assign promo = page.price.promo | remove: "." %}
-
-									{%- assign price_promo = promo %}
-									<div class="current">
-										Rp <span class="currency">{{ price_promo }}</span>
-									</div>
-
-									{%- assign price_regular = regular %}
-									<div class="line-through past -ml-1">
-										&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
-									</div>
-
-									{%- assign float_regular = regular | times: 1.0 %}
-									{%- assign float_promo = promo | times: 1.0 %}
-									{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
-									{%- assign decimal_split = decimal | split: '.' %}
-									{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
-									{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
-
-									{%- if decimal_split[1] == "0" %}
-										{%- assign discount = fix_decimal_split %}
-									{%- else %}
-										{%- if decimal_split[1].size <= 2 %}
-											{%- assign discount = fix_decimal %}
-										{%- else %}
-											{%- assign discount = fix_decimal | round: 2 %}
-										{%- endif %}
-									{%- endif %}
-
-									<div class="discount">
-										Diskon <span>{{ discount }}%</span>
-									</div>
-								{%- endif %}
-							{%- else %}
+					{% if page.price -%}
+					<div class="product-price my-1">
+						{%- if page.price.promo %}
+							{%- if page.price.promo != "" %}
 								{%- assign regular = page.price.regular | remove: "." %}
-								{%- assign price_regular = regular %}
+								{%- assign promo = page.price.promo | remove: "." %}
+
+								{%- assign price_promo = promo %}
 								<div class="current">
-									Rp <span class="currency">{{ price_regular }}</span>
+									Rp <span class="currency">{{ price_promo }}</span>
+								</div>
+
+								{%- assign price_regular = regular %}
+								<div class="line-through past -ml-1">
+									&nbsp;Rp <span class="currency">{{ price_regular }}</span>&nbsp;
+								</div>
+
+								{%- assign float_regular = regular | times: 1.0 %}
+								{%- assign float_promo = promo | times: 1.0 %}
+								{%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+								{%- assign decimal_split = decimal | split: '.' %}
+								{%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+								{%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+
+								{%- if decimal_split[1] == "0" %}
+									{%- assign discount = fix_decimal_split %}
+								{%- else %}
+									{%- if decimal_split[1].size <= 2 %}
+										{%- assign discount = fix_decimal %}
+									{%- else %}
+										{%- assign discount = fix_decimal | round: 2 %}
+									{%- endif %}
+								{%- endif %}
+
+								<div class="discount">
+									Diskon <span>{{ discount }}%</span>
 								</div>
 							{%- endif %}
-						</div>
-						{% endif -%}
-					</a>
-					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
-						Pesan Sekarang
-					</button>
-				</div>
+						{%- else %}
+							{%- assign regular = page.price.regular | remove: "." %}
+							{%- assign price_regular = regular %}
+							<div class="current">
+								Rp <span class="currency">{{ price_regular }}</span>
+							</div>
+						{%- endif %}
+					</div>
+					{% endif -%}
+
+					<div class="mt-auto">
+						<button type="button" class="button mt-3 mb-0">Pesan</button>
+					</div>
+				</a>
 			</article>
 			{% endfor %}
+		</div>
+
+		<div class="pagination mb-6">
+			<form>
+				<label for="paginator" class="sr-only">Pagination</label>
+				<select id="paginator">
+					{% for page in (1..paginator.total_pages) %}
+						{% if page == paginator.page %}
+							<option selected>{{ page }}</option>
+						{% elsif page == 1 %}
+							<option value="{{ '/' | relative_url }}">{{ page }}</option>
+						{% else %}
+							<option value="{{ site.paginate_path | relative_url | replace: ':num', page }}">{{ page }}</option>
+						{% endif %}
+					{% endfor %}
+				</select>
+			</form>
+			<div class="flex items-center gap-2">
+				{% if paginator.previous_page %}
+				<a href="{{ paginator.previous_page_path }}">
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+					</svg>
+				</a>
+				{% else %}
+				<span>
+					<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+						<path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+					</svg>
+				</span>
+				{% endif %}
+
+				{% if paginator.next_page %}
+					<a href="{{ paginator.next_page_path }}">
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+						</svg>
+					</a>
+				{% else %}
+					<span>
+						<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor">
+							<path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+						</svg>
+					</span>
+				{% endif %}
+			</div>
 		</div>
 	</section>
 	{%- endif %}

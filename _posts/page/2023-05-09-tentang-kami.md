@@ -1,5 +1,6 @@
 ---
 layout: page
+hidden: true
 navbar: true
 published: true
 title: Tentang kami

@@ -125,6 +125,16 @@
 	}
 	backTop('.backtop button','#viewport')
 
+// Pagination
+	function pagin(selector) {
+		document.querySelectorAll(selector).forEach(item => {
+			item.addEventListener('change', (e) => {
+				window.location.href = e.target.value
+			})
+		})
+	}
+	pagin('#paginator')
+
 // Categories & Tags
 	function filterProduct(path,attr) {
 		let url = window.location.href
@@ -155,7 +165,7 @@
 
 // Product Currency
 	function numberWithCommas(num) {
-	  return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')
+		return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g,'.')
 	}
 
 	document.querySelectorAll('.currency').forEach(item => {

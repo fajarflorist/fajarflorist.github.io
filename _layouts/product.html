@@ -179,7 +179,7 @@ layout: default
 			{%- endif %}
 
 			<article class="product-cart-add lg:hidden">
-				<div class="fixed right-0 left-0 bottom-0 p-6 z-[1] bg-white/50 backdrop-blur">
+				<div class="fixed right-0 left-0 bottom-0 px-6 py-4 lg:py-6 z-[1] bg-white/50 backdrop-blur">
 					<button type="button" class="button max-lg:max-w-lg mx-auto" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
 						Pesan Sekarang
 					</button>
@@ -195,13 +195,13 @@ layout: default
 	{%- if site.categories[category_name].size > 1 %}
 	<hr class="-mt-6 mb-8 lg:mt-6 lg:mb-6" />
 	<section class="max-lg:max-w-lg max-w-6xl mx-auto sm:px-6 lg:px-10 lg:py-6">
-		<h2 class="text-lg lg:text-xl sm:mb-6 max-sm:mx-6">Produk Terkait</h2>
-		<div class="product md:grid-cols-2 lg:grid-cols-6 gap-x-6 max-sm:block max-sm:pr-6 slide">
+		<h2 class="text-lg lg:text-xl sm:mb-6 max-sm:mx-6">Produk Rekomendasi</h2>
+		<div class="product md:grid-cols-2 lg:grid-cols-6 gap-x-6 max-sm:block max-sm:pr-6 sm:p-1 md:p-0 sm:-m-1 md:m-0 slide">
 			{%- for related in site.categories[category_name] limit: 7 %}
 			{%- if related.title == page.title %}
 				{% continue %}
 			{%- endif %}
-			<div class="max-sm:inline-block max-sm:w-3/4 max-sm:py-6 max-sm:pl-6">
+			<div class="max-sm:inline-block max-sm:w-4/6 max-sm:py-6 max-sm:pl-6">
 				<article class="product-item">
 					{%- if related.thumbnail %}
 					<a class="block border-b border-slate-100 {% if related.stock == 'Stok Habis' %}grayscale{% endif %}" href="{{ related.url }}">

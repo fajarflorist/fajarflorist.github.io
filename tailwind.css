@@ -234,7 +234,7 @@
 		@apply flex flex-col h-full p-3 md:p-4 lg:p-6;
 	}
 	.product-body .button {
-		@apply max-md:p-2 max-md:text-xs shadow-none md:mb-1 h-auto mt-auto;
+		@apply max-md:p-2 max-md:text-xs shadow-none md:mb-1 h-auto;
 	}
 
 	.product-image {
@@ -287,16 +287,39 @@
 		@apply bg-transparent hover:bg-transparent shadow-none text-inherit hover:text-inherit [&.active]:text-color-1;
 	}
 	aside .mobile .backtop {
-		@apply absolute -right-14 w-10 h-10 border-l border-black/40 transition-all;
+		@apply absolute -right-14 w-10 h-10 transition-all;
 	}
 	html.scroll aside .mobile {
-		@apply pr-20 [&_.backtop]:right-5;
+		@apply pr-16 [&_.backtop]:right-4;
 	}
 	aside .desktop .backtop {
-		@apply absolute bottom-[3px] -right-14 w-10 h-10 transition-all;
+		@apply absolute bottom-2 -right-14 w-10 h-10 transition-all;
 	}
 	html.scroll aside .desktop {
-		@apply pr-10 [&_.backtop]:-right-2;
+		@apply pr-9 [&_.backtop]:-right-2;
+	}
+
+	.pagination {
+		@apply flex items-center justify-between gap-2;
+	}
+	.pagination svg {
+		@apply block w-4 h-4;
+	}
+	.pagination a,
+	.pagination span {
+		@apply inline-block p-3 rounded-lg text-inherit border border-slate-200;
+	}
+	.pagination a {
+		@apply hover:bg-color-1 hover:text-white;
+	}
+	.pagination span {
+		@apply text-black/30;
+	}
+	.pagination form {
+		@apply inline-block align-top mx-1;
+	}
+	.pagination select {
+		@apply block w-full appearance-none cursor-pointer rounded-lg py-2 pl-4 pr-9 border border-slate-200 focus:border-color-1 focus:ring-color-1;
 	}
 }
 
