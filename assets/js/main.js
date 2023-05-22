@@ -303,8 +303,8 @@
 // Product Order
 	function order(number,chat,product,url) {
 		if ( document.body.clientWidth < 768 ) {
-			window.open('https://api.whatsapp.com/send?phone=' + number + '&text=' + chat + encodeURIComponent(product) + '%0A' + url, '_self').focus()
+			window.open('https://api.whatsapp.com/send?phone=' + number + '&text=' + chat + '*' + encodeURIComponent(product) + '*%0A' + url, '_self').focus()
 		} else {
-			window.open('https://api.whatsapp.com/send?phone=' + number + '&text=' + chat + encodeURIComponent(product) + '%0A' + url, '_blank').focus()
+			window.open('https://api.whatsapp.com/send?phone=' + number + '&text=' + chat + '*' + encodeURIComponent(product) + '*%0A' + url, '_blank').focus()
 		}
 	}

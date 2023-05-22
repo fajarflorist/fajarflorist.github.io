@@ -158,6 +158,15 @@ header nav li > * {
 [for*="navbar-field"] + div button {
 	white-space: nowrap;
 }
+[for*="description-field"] + * [class*="EditorControlBar"],
+[for*="whatsapp_chat-field"] + * [class*="EditorControlBar"] {
+	display: none;
+}
+[for*="description-field"] + * [class*="EditorControlBar"] + div,
+[for*="whatsapp_chat-field"] + * [class*="EditorControlBar"] + div {
+	border-top: 2px solid rgb(223, 223, 227);
+	margin: 0;
+}
 
 @media (max-width: 999px) {
 	.css-1iwq7gj-GridCard-card {

@@ -92,7 +92,7 @@ collections:
     name: "config"
     identifier_field: name
     files:
-      - label: "Pengaturan Umum"
+      - label: "Umum"
         name: "general"
         identifier_field: name
         file: "_data/config/general.yml"
@@ -105,3 +105,9 @@ collections:
           - {label: "Nomor Telepon", name: "phone_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
           - {label: "Nomor WhatsApp", name: "whatsapp_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx", required: true}
           - {label: "Template Chat", name: "whatsapp_chat", widget: "markdown"}
+      - label: "Statistik"
+        name: "statistic"
+        identifier_field: name
+        file: "_data/config/statistic.yml"
+        fields:
+          - {label: "Google Tag Manager", name: "google_tag_manager", widget: "string"}

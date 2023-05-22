@@ -24,6 +24,9 @@
 # Phone number with country code, e.g. 628123456789
 # phone_number: 
 
+# Google Tag Manager web tracking code, e.g. G-TK69RB8KDF
+# google_tag_manager: 
+
 # What collections do you want to show, value is true or false
 content_pages: false
 content_blogs: false
@@ -51,9 +54,6 @@ tab_color:
 
 # Step version of media assets with date (ISO 8601, UTC format) with quotes, e.g. "2023-12-31T23:59:59+07:00"
 version: 1.0.1
-
-# Google Tag Manager web tracking code, e.g. G-TK69RB8KDF
-google_tag_manager: 
 
 #----------------------------
 # System Configs
