@@ -1,0 +1,11 @@
+---
+layout: none
+---
+[
+  {%- for category in site.categories %}
+    {
+      "title"  : "{{ category | first }}",
+      "url"    : "/kategori/?q={{ category | first | replace: ' ', '+' }}"
+    } {%- unless forloop.last %},{%- endunless %}
+  {%- endfor %}
+]

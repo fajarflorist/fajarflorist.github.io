@@ -155,10 +155,20 @@
 	filterProduct('/label/','?q=','data-tag')
 
 // Search
+	function generateRandomly(length) {
+		let string = ''
+			db = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+			dblength = db.length
+		for ( var i = 0; i < length; i++ ) {
+			string += db.charAt(Math.floor(Math.random() * dblength))
+		}
+		return string
+	}
+
 	function sjs() {
 		let searchKeyword = document.querySelector('#search-input')
 			searchResult = document.querySelector('.result')
-			searchProduct = '/assets/json/product.json'
+			searchProduct = '/assets/json/products.json?v=' + generateRandomly(10)
 			searchNotFound = ''
 			searchTemplate = `<article class="product-item">
 			<a class="block border-b border-slate-100 {stock}" href="{url}">
@@ -222,28 +232,25 @@
 				})
 			}
 			document.querySelectorAll(selector).forEach(item => {
-				item.addEventListener('submit', (e) => {
-					e.preventDefault()
-				})
 				item.querySelector('input').addEventListener('keyup', (e) => {
 					searchCounter('.result-counter')
 					let counter = document.querySelector('.result-counter')
 					if ( e.target.value != '' ) {
 						counter.classList.remove('hidden')
+						price('.currency')
 					} else {
 						counter.classList.add('hidden')
 					}
 				})
 			})
-		} else {
-			document.querySelectorAll(selector).forEach(item => {
-				item.addEventListener('submit', (e) => {
-					e.preventDefault()
-					let query = item.querySelector('input').value.replace(/[ ]/g,'+')
-					window.location.href = path + params + query
-				})
-			})
 		}
+		document.querySelectorAll(selector).forEach(item => {
+			item.addEventListener('submit', (e) => {
+				e.preventDefault()
+				let query = item.querySelector('input').value.replace(/[ ]/g,'+')
+				window.location.href = path + params + query
+			})
+		})
 		document.querySelectorAll('.result').forEach(() => {
 			sjs()
 			price('.currency')

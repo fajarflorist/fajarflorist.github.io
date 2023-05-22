@@ -241,7 +241,7 @@
 		@apply flex flex-col h-full p-3 md:p-4 lg:p-6;
 	}
 	.product-body .button {
-		@apply max-md:p-2 max-md:text-xs shadow-none md:mb-1 h-auto;
+		@apply max-md:p-2 max-md:text-sm shadow-none md:mb-1 h-auto;
 	}
 
 	.product-image {
