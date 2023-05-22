@@ -88,3 +88,20 @@ collections:
       - {label: "Deskripsi", name: "body", widget: "markdown"}
       - {label: "Tag", name: "tags", widget: "list", hint: "Pisahkan dengan koma"}
       - {label: "Tanggal", name: "date", widget: "datetime"}
+  - label: "Pengaturan"
+    name: "config"
+    identifier_field: name
+    files:
+      - label: "Pengaturan Umum"
+        name: "general"
+        identifier_field: name
+        file: "_data/config/general.yml"
+        fields:
+          - {label: "Nama Situs", name: "title", widget: "string", required: true}
+          - {label: "Judul Situs", name: "headline", widget: "string"}
+          - {label: "URL Situs", name: "url", widget: "string", hint: "Alamat URL lengkap, contoh: https://contoh.com"}
+          - {label: "Deskripsi Situs", name: "description", widget: "markdown", required: true}
+          - {label: "Kata Kunci", name: "keywords", widget: "list", hint: "Pisahkan dengan koma"}
+          - {label: "Nomor Telepon", name: "phone_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
+          - {label: "Nomor WhatsApp", name: "whatsapp_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx", required: true}
+          - {label: "Template Chat", name: "whatsapp_chat", widget: "markdown"}

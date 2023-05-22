@@ -4,11 +4,11 @@
 		{
 			"@context": "https://schema.org/",
 			"@type": "WebSite",
-			"name": "{{ site.title }}",
-			"url": "{{ site.url }}",
+			"name": "{{ site.data.config.general.title }}",
+			"url": "{{ site.data.config.general.url }}",
 			"potentialAction": {
 				"@type": "SearchAction",
-				"target": "{{ site.url }}/cari/?q={search_term_string}",
+				"target": "{{ site.data.config.general.url }}/cari/?q={search_term_string}",
 				"query-input": "required name=search_term_string"
 			}
 		}
@@ -17,7 +17,7 @@
 
 	{%- if page.layout == 'product' %}
 		{%- capture brand -%}
-			{{ site.title }}
+			{{ site.data.config.general.title }}
 		{%- endcapture -%}
 
 		{%- capture name -%}
@@ -28,7 +28,7 @@
 			{%- if page.thumbnail contains 'http' -%}
 				{{ page.thumbnail }}
 			{%- else -%}
-				{{ site.url }}{{ page.thumbnail }}
+				{{ page.thumbnail | absolute_url }}
 			{%- endif -%}
 		{%- endcapture -%}
 
@@ -37,7 +37,7 @@
 		{%- endcapture -%}
 
 		{%- capture url -%}
-			{{ site.url }}{{ page.url }}
+			{{ page.url | absolute_url }}
 		{%- endcapture -%}
 
 		{%- if page.price.promo %}

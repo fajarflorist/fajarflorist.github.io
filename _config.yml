@@ -3,26 +3,26 @@
 #----------------------------
 
 # Base hostname & protocol for your site, e.g. https://example.com or https://example.github.io
-url: 
+# url: 
 
 # Name of your site, e.g. ACME Corp.
-title: Fajar Florist
+# title: 
 
 # Headline
-headline: Karangan Bunga Bekasi - Fast Response 24/7
+# headline: 
 
 # Short bio or description, e.g. Professional architect for your house.
-description: Bunga papan dukacita, wedding, congratulations, hand bouquet, bunga box, standing flower. Pusat karangan bunga Bekasi. Pesan via chat WA di sini!
+# description: 
 
 # Keywords for search engine crawling & separate with comma, e.g. lorem, ipsum, dolor, commodo
-keywords: karangan, bunga, kembang, flower, florist, duka, suka, cita, berduka, bahagia
+# keywords: 
 
 # WhatsApp config for product order, for encode chat template use https://www.urlencoder.org/
-whatsapp_number: 628123456789
-whatsapp_chat: Halo%20kak...%0ASaya%20mau%20order%20
+# whatsapp_number: 
+# whatsapp_chat: 
 
 # Phone number with country code, e.g. 628123456789
-phone_number: 628123456789
+# phone_number: 
 
 # What collections do you want to show, value is true or false
 content_pages: false

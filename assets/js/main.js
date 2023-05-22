@@ -158,9 +158,9 @@
 	function generateRandomly(length) {
 		let string = ''
 			db = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-			dblength = db.length
+			dbsize = db.length
 		for ( var i = 0; i < length; i++ ) {
-			string += db.charAt(Math.floor(Math.random() * dblength))
+			string += db.charAt(Math.floor(Math.random() * dbsize))
 		}
 		return string
 	}
@@ -228,7 +228,7 @@
 						price('.currency')
 						searchCounter('.result-counter')
 						document.querySelector('.result-counter').classList.remove('hidden')
-					},100)
+					},500)
 				})
 			}
 			document.querySelectorAll(selector).forEach(item => {

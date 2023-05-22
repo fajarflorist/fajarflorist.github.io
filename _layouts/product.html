@@ -65,7 +65,7 @@ layout: default
 				{%- endif %}
 
 				<section class="product-cart-add max-lg:hidden">
-					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
+					<button type="button" class="button" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.data.config.general.whatsapp_number }}','{{ site.data.config.general.whatsapp_chat }}','{{ page.title }}','{{ site.data.config.general.url }}{{ page.url }}')">
 						Pesan Sekarang
 					</button>
 				</section>
@@ -180,7 +180,7 @@ layout: default
 
 			<article class="product-cart-add lg:hidden">
 				<div class="fixed right-0 left-0 bottom-0 px-6 py-4 lg:py-6 z-[1] bg-white/50 backdrop-blur transition-all">
-					<button type="button" class="button max-lg:max-w-lg mx-auto" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.whatsapp_number }}','{{ site.whatsapp_chat }}','{{ page.title }}','{{ site.url }}{{ page.url }}')">
+					<button type="button" class="button max-lg:max-w-lg mx-auto" {% if page.stock == "Stok Habis" %}disabled{% endif %} onclick="order('{{ site.data.config.general.whatsapp_number }}','{{ site.data.config.general.whatsapp_chat }}','{{ page.title }}','{{ site.data.config.general.url }}{{ page.url }}')">
 						Pesan Sekarang
 					</button>
 					<div class="backtop">

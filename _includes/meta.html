@@ -5,10 +5,10 @@
 	<meta name="google" content="notranslate" />
 	<meta name="robots" content="index, follow" />
 
-	<meta name="keywords" content="{{ site.keywords }}" />
-	<meta name="author" content="{{ site.title }}" />
-	<meta property="og:site_name" content="{{ site.title }}" />
-	<meta name="twitter:site" content="{{ site.title }}" />
+	<meta name="keywords" content="{{ site.data.config.general.keywords }}" />
+	<meta name="author" content="{{ site.data.config.general.title }}" />
+	<meta property="og:site_name" content="{{ site.data.config.general.title }}" />
+	<meta name="twitter:site" content="{{ site.data.config.general.title }}" />
 
 	<meta property="og:type" content="website" />
 	<meta property="og:locale" content="{{ site.lang | default: 'id-ID' }}" />
@@ -19,14 +19,14 @@
 		{%- if page.thumbnail contains 'http' -%}
 			{{ page.thumbnail }}
 		{%- else -%}
-			{{ site.url }}{{ page.thumbnail }}
+			{{ page.thumbnail | absolute_url }}
 		{%- endif -%}
 	{%- endcapture -%}
 	<meta property="og:image" content="{{ ogp }}" />
 	<meta name="twitter:image" content="{{ ogp }}" />
 	{% else %}
-	<meta property="og:image" content="{{ site.url }}/assets/img/ogp.jpeg" />
-	<meta name="twitter:image" content="{{ site.url }}/assets/img/ogp.jpeg" />
+	<meta property="og:image" content="{{ '/assets/img/ogp.jpeg' | absolute_url }}" />
+	<meta name="twitter:image" content="{{ '/assets/img/ogp.jpeg' | absolute_url }}" />
 	{% endif %}
 
 	{%- if page.title %}
@@ -35,10 +35,10 @@
 	<meta name="twitter:title" content="{{ page.title }}" />
 	<meta name="apple-mobile-web-app-title" content="{{ page.title }}" />
 	{% else %}
-	<meta name="title" content="{{ site.title }}" />
-	<meta property="og:title" content="{{ site.title }}" />
-	<meta name="twitter:title" content="{{ site.title }}" />
-	<meta name="apple-mobile-web-app-title" content="{{ site.title }}" />
+	<meta name="title" content="{{ site.data.config.general.title }}" />
+	<meta property="og:title" content="{{ site.data.config.general.title }}" />
+	<meta name="twitter:title" content="{{ site.data.config.general.title }}" />
+	<meta name="apple-mobile-web-app-title" content="{{ site.data.config.general.title }}" />
 	{%- endif %}
 
 	{%- if page.url != '/' %}
@@ -52,14 +52,14 @@
 	<meta name="twitter:description" content="{{ page.content | newline_to_br | replace: '<br />', ' ' | strip_newlines | strip_html | replace: '  ', ' ' | strip | truncatewords: 30 }}" />
 	{%- endif %}
 	{%- else %}
-	<meta name="description" content="{{ site.description }}" />
-	<meta property="og:description" content="{{ site.description }}" />
-	<meta name="twitter:description" content="{{ site.description }}" />
+	<meta name="description" content="{{ site.data.config.general.description }}" />
+	<meta property="og:description" content="{{ site.data.config.general.description }}" />
+	<meta name="twitter:description" content="{{ site.data.config.general.description }}" />
 	{%- endif %}
 
 	<!-- Canonical -->
-	<meta property="og:url" content="{{ site.url }}{{ page.url }}" />
-	<link rel="canonical" href="{{ site.url }}{{ page.url }}" />
+	<meta property="og:url" content="{{ page.url | absolute_url }}" />
+	<link rel="canonical" href="{{ page.url | absolute_url }}" />
 
 	<!-- Favicon -->
 	<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ '/assets/img/favicon.ico' | absolute_url }}" />
