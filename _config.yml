@@ -38,7 +38,7 @@ content_products: true
 
 # Display posts on home
 # Pagination path url, e.g. /product/:num/
-paginate: 6
+paginate: 12
 paginate_path: /produk/:num/
 
 # Subpath of your site, e.g. /blog
