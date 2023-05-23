@@ -7,9 +7,9 @@ backend:
 local_backend:
   url: http://localhost:8081/api/v1
 
-site_url: https://fajarflorist.github.io
-display_url: https://fajarflorist.github.io
-logo_url: https://fajarflorist.github.io/assets/img/favicon.png
+site_url: https://fajarflorist.com
+display_url: https://fajarflorist.com
+logo_url: https://fajarflorist.com/assets/img/logo.png
 
 search: true
 show_preview_links: true
