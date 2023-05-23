@@ -201,7 +201,7 @@ layout: default
 	{%- assign i = 0 -%}
 	{%- if site.categories[category_name].size > 1 %}
 	<hr class="-mt-6 mb-8 lg:mt-6 lg:mb-6" />
-	<section class="max-lg:max-w-lg max-w-6xl mx-auto sm:px-6 lg:px-10 lg:py-6">
+	<section class="max-lg:max-w-lg max-w-6xl mx-auto sm:px-6 lg:px-10 lg:py-6 mb-4">
 		<h2 class="text-lg lg:text-xl sm:mb-6 max-sm:mx-6">Produk Rekomendasi</h2>
 		<div class="product md:grid-cols-2 lg:grid-cols-6 gap-x-6 max-sm:block max-sm:pr-6 sm:p-1 md:p-0 sm:-m-1 md:m-0 slide">
 			{%- for related in site.categories[category_name] limit: 7 %}

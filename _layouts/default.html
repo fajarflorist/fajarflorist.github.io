@@ -4,7 +4,7 @@
 	{% if page.title -%}
 	<title>{{ page.title }} - {{ site.data.config.general.title }}</title>
 	{%- else %}
-		{%- if site.data.config.general.headline -%}
+		{%- if site.data.config.general.headline != "" -%}
 		<title>{{ site.data.config.general.headline }}</title>
 		{%- else %}
 		<title>{{ site.data.config.general.title }}</title>
@@ -114,29 +114,43 @@
 <main>
 	{%- assign pagin = site.paginate_path | remove: ":num/" -%}
 	{%- if page.url == '/' or page.url contains pagin %}
+	{%- if site.data.config.banner.banner_home != "" %}
+	<section class="max-w-6xl mx-auto lg:px-10">
+		<img src="{{ site.data.config.banner.banner_home | relative_url }}" alt="banner" width="640" height="360" class="block mx-auto" />
+	</section>
+	{%- endif %}
+
+	{%- if site.data.config.icon.pros1.icon != "" or site.data.config.icon.pros2.icon != "" or site.data.config.icon.pros3.icon != "" %}
 	<section class="mb-8 border-t border-b">
 		<div class="max-w-6xl mx-auto px-6 lg:px-10 py-5">
-			<div class="grid grid-cols-3 justify-around gap-6">
-				<article class="text-center group">
-					<img src="{{ '/assets/img/icon-expedition.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
-					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Pengiriman cepat</p>
+			<div class="flex justify-center gap-6">
+				{%- if site.data.config.icon.pros1.icon != "" %}
+				<article class="w-2/6 text-center group">
+					<img src="{{ site.data.config.icon.pros1.icon | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">{{ site.data.config.icon.pros1.title }}</p>
 				</article>
-				<article class="text-center group">
-					<img src="{{ '/assets/img/icon-secure.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
-					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Transaksi aman dan nyaman</p>
+				{%- endif %}
+				{%- if site.data.config.icon.pros2.icon != "" %}
+				<article class="w-2/6 text-center group">
+					<img src="{{ site.data.config.icon.pros2.icon | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">{{ site.data.config.icon.pros2.title }}</p>
 				</article>
-				<article class="text-center group">
-					<img src="{{ '/assets/img/icon-24h.png' | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
-					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">Layanan cepat 24 jam</p>
+				{%- endif %}
+				{%- if site.data.config.icon.pros3.icon != "" %}
+				<article class="w-2/6 text-center group">
+					<img src="{{ site.data.config.icon.pros3.icon | relative_url }}" alt="icon" width="40" height="40" class="inline-block max-md:mb-1 md:mr-1 transition-all md:group-hover:img-to-color-1" />
+					<p class="md:inline-block text-xs md:text-sm lg:text-base max-md:max-w-[11ch] mx-auto transition-all md:opacity-70 md:group-hover:opacity-100">{{ site.data.config.icon.pros3.title }}</p>
 				</article>
+				{%- endif %}
 			</div>
 		</div>
 	</section>
 	{%- endif %}
+	{%- endif %}
 
 	{%- if page.url == '/' or page.url contains pagin or page.url contains 'kategori' or page.url contains 'label' %}
 	<section class="max-w-6xl mx-auto px-6 lg:px-10">
-		<div class="my-10">
+		<div class="mt-5 mb-10">
 			<form spellcheck="false" class="search relative">
 				<fieldset>
 					<label for="search-input" class="label sr-only">Cari</label>
@@ -179,7 +193,7 @@
 <aside>
 	{% if page.layout != 'product' -%}
 	<section class="mobile fixed right-0 left-0 bottom-0 px-6 py-4 lg:py-6 z-[1] bg-white/50 backdrop-blur flex gap-5 text-sm transition-all lg:hidden">
-		{%- if site.data.config.general.phone_number %}
+		{%- if site.data.config.general.phone_number != "" %}
 		<a href="tel:+{{ site.data.config.general.phone_number }}" rel="noopener noreferrer" class="button py-2.5 bg-blue-600 hover:bg-blue-500">
 			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none" class="w-5 h-5 mr-1">
 				<path stroke-linecap="round" stroke-linejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 002.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 01-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 00-1.091-.852H4.5A2.25 2.25 0 002.25 4.5v2.25z" />

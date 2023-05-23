@@ -100,22 +100,51 @@ collections:
         file: "_data/config/general.yml"
         fields:
           - {label: "Nama Situs", name: "title", widget: "string", required: true}
-          - {label: "Judul Situs", name: "headline", widget: "string"}
-          - {label: "URL Situs", name: "url", widget: "string", hint: "Alamat URL lengkap, contoh: https://contoh.com"}
+          - {label: "Judul Situs", name: "headline", widget: "string", required: false}
+          - {label: "URL Situs", name: "url", widget: "string", required: true, hint: "Alamat URL lengkap, contoh: https://contoh.com"}
           - {label: "Deskripsi Situs", name: "description", widget: "markdown", required: true}
-          - {label: "Kata Kunci", name: "keywords", widget: "list", hint: "Pisahkan dengan koma"}
-          - {label: "Nomor Telepon", name: "phone_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
-          - {label: "Nomor WhatsApp", name: "whatsapp_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx", required: true}
-          - {label: "Template Chat", name: "whatsapp_chat", widget: "markdown"}
+          - {label: "Kata Kunci", name: "keywords", widget: "list", required: true, hint: "Pisahkan dengan koma"}
+          - {label: "Nomor Telepon", name: "phone_number", widget: "number", required: false, hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
+          - {label: "Nomor WhatsApp", name: "whatsapp_number", widget: "number", required: true, hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
+          - {label: "Template Chat", name: "whatsapp_chat", widget: "markdown", required: true}
       - label: "Logo"
         name: "logo"
         identifier_field: name
         file: "_data/config/logo.yml"
         fields:
           - {label: "Favicon", name: "favicon", widget: "image", hint: "Direkomendasikan ukuran 192x192 pixel", required: true}
+      - label: "Keunggulan"
+        name: "icon"
+        identifier_field: name
+        file: "_data/config/icon.yml"
+        fields:
+          - label: "Keunggulan 1"
+            name: "pros1"
+            widget: "object"
+            fields:
+              - {label: "Icon", name: "icon", widget: "image", required: false, hint: "Direkomendasikan ukuran 192x192 pixel"}
+              - {label: "Deskripsi", name: "title", widget: "string", required: false}
+          - label: "Keunggulan 2"
+            name: "pros2"
+            widget: "object"
+            fields:
+              - {label: "Icon", name: "icon", widget: "image", required: false, hint: "Direkomendasikan ukuran 192x192 pixel"}
+              - {label: "Deskripsi", name: "title", widget: "string", required: false}
+          - label: "Keunggulan 3"
+            name: "pros3"
+            widget: "object"
+            fields:
+              - {label: "Icon", name: "icon", widget: "image", required: false, hint: "Direkomendasikan ukuran 192x192 pixel"}
+              - {label: "Deskripsi", name: "title", widget: "string", required: false}
+      - label: "Banner"
+        name: "banner"
+        identifier_field: name
+        file: "_data/config/banner.yml"
+        fields:
+          - {label: "Banner", name: "banner_home", widget: "image", required: false}
       - label: "Statistik"
         name: "statistic"
         identifier_field: name
         file: "_data/config/statistic.yml"
         fields:
-          - {label: "Google Tag Manager", name: "google_tag_manager", widget: "string"}
+          - {label: "Google Tag Manager", name: "google_tag_manager", widget: "string", required: false}
