@@ -166,7 +166,7 @@
 	}
 
 	function sjs() {
-		let searchKeyword = document.querySelector('#search-input')
+		let searchKeyword = document.querySelector('#search-sjs')
 			searchResult = document.querySelector('.result')
 			searchProduct = '/assets/json/products.json?v=' + generateRandomly(10)
 			searchNotFound = ''
@@ -220,40 +220,28 @@
 		if ( url.indexOf(path) > -1 ) {
 			if ( url.indexOf(params) > -1 ) {
 				let query = url.split(params)
-				document.querySelectorAll('#search-input').forEach(item => {
+					search = sjs()
+					input = '#search-input'
+					counter = '.result-counter'
+					loading = '.loading'
+				document.querySelectorAll(input).forEach(item => {
 					item.value = query[1].replace(/[+]/g,' ')
-					let search = sjs()
 					setTimeout(() => {
+						document.querySelector(loading).classList.add('hidden')
 						search.search(item.value)
 						price('.currency')
-						searchCounter('.result-counter')
-						document.querySelector('.result-counter').classList.remove('hidden')
+						searchCounter(counter)
+						document.querySelector(counter).classList.remove('hidden')
 					},500)
 				})
 			}
-			document.querySelectorAll(selector).forEach(item => {
-				item.querySelector('input').addEventListener('keyup', (e) => {
-					searchCounter('.result-counter')
-					let counter = document.querySelector('.result-counter')
-					if ( e.target.value != '' ) {
-						counter.classList.remove('hidden')
-						price('.currency')
-					} else {
-						counter.classList.add('hidden')
-					}
-				})
-			})
 		}
 		document.querySelectorAll(selector).forEach(item => {
 			item.addEventListener('submit', (e) => {
 				e.preventDefault()
-				let query = item.querySelector('input').value.replace(/[ ]/g,'+')
+				let query = item.querySelector('#search-input').value.replace(/[ ]/g,'+')
 				window.location.href = path + params + query
 			})
-		})
-		document.querySelectorAll('.result').forEach(() => {
-			sjs()
-			price('.currency')
 		})
 	}
 	searchForm('/cari/','?q=','.search')

@@ -2200,6 +2200,15 @@ html.scroll aside .desktop .backtop {
 .max-w-6xl {
   max-width: 72rem;
 }
+@keyframes spin {
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
 .cursor-zoom-in {
   cursor: zoom-in;
 }
@@ -2369,6 +2378,10 @@ html.scroll aside .desktop .backtop {
 .text-inherit {
   color: inherit;
 }
+.text-color-1 {
+  --tw-text-opacity: 1;
+  color: rgb(var(--color-1) / var(--tw-text-opacity));
+}
 .underline {
   text-decoration-line: underline;
 }
@@ -2404,6 +2417,9 @@ html.scroll aside .desktop .backtop {
   transition-property: all;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+.duration-200 {
+  transition-duration: 200ms;
 }
 .aspect-square {
 		aspect-ratio: 1 / 1;

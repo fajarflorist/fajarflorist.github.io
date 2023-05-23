@@ -5,13 +5,14 @@ description: Cari produk pilihanmu disini!
 permalink: /cari/
 ---
 
-<section class="max-w-6xl px-6 lg:px-10 py-6">
+<section class="max-w-6xl px-6 lg:px-10 mx-auto py-6">
 		<h1 class="text-2xl lg:text-4xl">{{ page.title }}</h1>
 
 		<form spellcheck="false" class="search relative mt-6 mb-8">
 			<fieldset>
 				<label for="search-input" class="label sr-only">Cari</label>
-				<input type="text" id="search-input" placeholder="Silakan masukkan kata kunci..." class="input pl-6 pr-20 h-16 rounded-xl shadow-xl" required />
+				<input type="text" id="search-input" placeholder="Mau cari apa?" class="input pl-6 pr-20 h-16 rounded-xl shadow-xl" required />
+				<input type="text" id="search-sjs" class="sr-only" />
 			</fieldset>
 			<fieldset class="absolute top-0 bottom-0 right-3 flex items-center">
 				<button type="submit" class="button w-auto h-auto px-3.5 shadow-none">
@@ -23,9 +24,16 @@ permalink: /cari/
 			</fieldset>
 		</form>
 
-		<div class="result-counter opacity-60 mb-10 hidden">
-			Ditemukan <span>0</span> hasil pencarian
-		</div>
+		<article class="loading py-6">
+			<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" class="animate-spin duration-200 block mx-auto text-color-1">
+				<circle stroke-opacity=".25" stroke="currentColor" stroke-width="4" cx="12" cy="12" r="10" />
+				<path fill-opacity=".75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+			</svg>
+		</article>
 
-		<div class="result product"></div>
+		<article class="result-counter opacity-60 mb-10 hidden">
+			Ditemukan <span>0</span> hasil pencarian
+		</article>
+
+		<article class="result product"></article>
 	</section>
