@@ -48,7 +48,7 @@
 <header>
 	<section class="max-w-6xl mx-auto px-6 lg:px-10 my-6 flex items-center justify-between flex-wrap">
 		<a href="{{ site.data.config.general.url }}" class="brand">
-			<img src="{{ '/assets/img/favicon.png' | relative_url }}" alt="logo" width="50" height="50" />
+			<img src="{{ site.data.config.logo.favicon | relative_url }}" alt="logo" width="50" height="50" />
 			<span>{{ site.data.config.general.title }}</span>
 		</a>
 		<div class="flex items-center gap-4 md:order-3 md:ml-4">
@@ -159,7 +159,7 @@
 </main>
 
 <footer>
-	<section class="px-6 lg:px-10 my-6 text-xs lg:text-sm text-center opacity-60 max-lg:opacity-0">
+	<section class="px-6 lg:px-10 my-6 text-xs lg:text-sm text-center opacity-60 {% if page.url == '/' or page.url contains pagin %}max-lg:opacity-0{% else %}max-lg:hidden{% endif %}">
 		{%- capture copyright -%}
 			{%- assign thisyear = site.time | date: '%Y' -%}
 			{%- if thisyear > '2023' -%}

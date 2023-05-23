@@ -62,10 +62,9 @@
 	<link rel="canonical" href="{{ page.url | absolute_url }}" />
 
 	<!-- Favicon -->
-	<link rel="shortcut icon" sizes="16x16 32x32 48x48" href="{{ '/assets/img/favicon.ico' | absolute_url }}" />
-	<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon.png' | absolute_url }}" />
-	<link rel="apple-touch-icon" href="{{ '/assets/img/favicon.png' | absolute_url }}" />
-	<meta name="msapplication-TileImage" content="{{ '/assets/img/favicon.png' | absolute_url }}" />
+	<link rel="icon" type="image/png" href="{{ site.data.config.logo.favicon | absolute_url }}" />
+	<link rel="apple-touch-icon" href="{{ site.data.config.logo.favicon | absolute_url }}" />
+	<meta name="msapplication-TileImage" content="{{ site.data.config.logo.favicon | absolute_url }}" />
 
 	<!-- Status Bar -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />

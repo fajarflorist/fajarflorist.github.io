@@ -226,6 +226,7 @@
 					loading = '.loading'
 				document.querySelectorAll(input).forEach(item => {
 					item.value = query[1].replace(/[+]/g,' ')
+					document.querySelector(loading).classList.remove('hidden')
 					setTimeout(() => {
 						document.querySelector(loading).classList.add('hidden')
 						search.search(item.value)

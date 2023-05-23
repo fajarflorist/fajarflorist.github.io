@@ -91,6 +91,8 @@ collections:
   - label: "Pengaturan"
     name: "config"
     identifier_field: name
+    media_folder: "../../assets/upload/config"
+    public_folder: "/assets/upload/config"
     files:
       - label: "Umum"
         name: "general"
@@ -105,6 +107,12 @@ collections:
           - {label: "Nomor Telepon", name: "phone_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx"}
           - {label: "Nomor WhatsApp", name: "whatsapp_number", widget: "number", hint: "Gunakan awalan 62, contoh: 62812xxxxxx", required: true}
           - {label: "Template Chat", name: "whatsapp_chat", widget: "markdown"}
+      - label: "Logo"
+        name: "logo"
+        identifier_field: name
+        file: "_data/config/logo.yml"
+        fields:
+          - {label: "Favicon", name: "favicon", widget: "image", hint: "Direkomendasikan ukuran 192x192 pixel", required: true}
       - label: "Statistik"
         name: "statistic"
         identifier_field: name

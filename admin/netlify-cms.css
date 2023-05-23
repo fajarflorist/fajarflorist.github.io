@@ -167,6 +167,10 @@ header nav li > * {
 	border-top: 2px solid rgb(223, 223, 227);
 	margin: 0;
 }
+[class*="ControlHint"] a {
+	font-size: inherit;
+	pointer-events: none;
+}
 
 @media (max-width: 999px) {
 	.css-1iwq7gj-GridCard-card {
