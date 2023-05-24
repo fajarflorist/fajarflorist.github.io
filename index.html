@@ -65,7 +65,7 @@ layout: default
 					<h3 class="text-sm md:text-lg 2xl:text-xl line-clamp-2 max-md:font-normal">{{ page.title }}</h3>
 
 					{% if page.price -%}
-					{%- if page.price.regular <= 0 %}
+					{%- if page.price.regular >= 1 %}
 					<div class="product-price my-1">
 						{%- if page.price.promo %}
 							{%- if page.price.promo != "" %}
