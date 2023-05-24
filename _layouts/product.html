@@ -103,6 +103,7 @@ layout: default
 			</article>
 
 			{% if page.price -%}
+			{%- if page.price.regular != 0 %}
 			<article class="product-price">
 				{%- if page.price.promo %}
 					{%- if page.price.promo != "" %}
@@ -158,6 +159,7 @@ layout: default
 					</div>
 				{%- endif %}
 			</article>
+			{%- endif %}
 			{%- endif %}
 
 			<article class="product-description prose dark:prose-invert">
