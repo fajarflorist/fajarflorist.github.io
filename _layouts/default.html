@@ -30,6 +30,9 @@
 	<link rel="preload" as="script" href="{{ '/assets/js/splide.min.js' | relative_url }}" />
 	<link rel="preload" as="script" href="{{ '/assets/js/zoom.min.js' | relative_url }}" />
 	{%- endif %}
+	{%- if page.url contains 'cari' %}
+	<link rel="preload" as="script" href="{{ '/assets/js/search.min.js' | relative_url }}" />
+	{%- endif %}
 
 	<!-- Main -->
 	{%- if page.layout == 'product' %}
@@ -178,7 +181,7 @@
 </main>
 
 <footer>
-	<section class="px-6 lg:px-10 my-6 text-xs lg:text-sm text-center opacity-60 {% if page.url == '/' or page.url contains pagin %}max-lg:opacity-0{% else %}max-lg:hidden{% endif %}">
+	<section class="px-6 lg:px-10 my-6 text-xs lg:text-sm text-center opacity-60 {% if page.url == '/' or page.url contains pagin or page.url contains 'cari' or page.layout == 'page' %}max-lg:opacity-0{% else %}max-lg:hidden{% endif %}">
 		{%- capture copyright -%}
 			{%- assign thisyear = site.time | date: '%Y' -%}
 			{%- if thisyear > '2023' -%}

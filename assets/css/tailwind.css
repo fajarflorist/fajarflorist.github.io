@@ -2437,7 +2437,6 @@ html.scroll aside .desktop .backtop {
 		aspect-ratio: 1 / 1;
 	}
 /* https://codepen.io/sosuke/pen/Pjoqqp */
-
 :is(.dark .dark\:prose-invert) {
   --tw-prose-body: var(--tw-prose-invert-body);
   --tw-prose-headings: var(--tw-prose-invert-headings);
@@ -2456,29 +2455,23 @@ html.scroll aside .desktop .backtop {
   --tw-prose-th-borders: var(--tw-prose-invert-th-borders);
   --tw-prose-td-borders: var(--tw-prose-invert-td-borders);
 }
-
 .first\:mt-0:first-child {
   margin-top: 0px;
 }
-
 .last\:mb-0:last-child {
   margin-bottom: 0px;
 }
-
 .hover\:bg-blue-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(59 130 246 / var(--tw-bg-opacity));
 }
-
 .hover\:bg-emerald-500:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(16 185 129 / var(--tw-bg-opacity));
 }
-
 .hover\:text-inherit:hover {
   color: inherit;
 }
-
 @media not all and (min-width: 1024px) {
 
   .max-lg\:fixed {
@@ -2531,7 +2524,6 @@ html.scroll aside .desktop .backtop {
     opacity: 0;
   }
 }
-
 @media not all and (min-width: 768px) {
 
   .max-md\:mb-1 {
@@ -2554,7 +2546,6 @@ html.scroll aside .desktop .backtop {
     font-weight: 400;
   }
 }
-
 @media not all and (min-width: 640px) {
 
   .max-sm\:mx-6 {
@@ -2587,7 +2578,6 @@ html.scroll aside .desktop .backtop {
     padding-right: 1.5rem;
   }
 }
-
 @media (min-width: 640px) {
 
   .sm\:-m-1 {
@@ -2626,7 +2616,6 @@ html.scroll aside .desktop .backtop {
     line-height: 1.25rem;
   }
 }
-
 @media (min-width: 768px) {
 
   .md\:order-2 {
@@ -2703,7 +2692,6 @@ html.scroll aside .desktop .backtop {
 		filter: invert(32%) sepia(27%) saturate(4735%) hue-rotate(326deg) brightness(105%) contrast(91%);
 	}
 }
-
 @media (min-width: 1024px) {
 
   .lg\:order-1 {
@@ -2788,7 +2776,6 @@ html.scroll aside .desktop .backtop {
     line-height: 1.75rem;
   }
 }
-
 @media (min-width: 1536px) {
 
   .\32xl\:text-xl {
@@ -2796,19 +2783,15 @@ html.scroll aside .desktop .backtop {
     line-height: 1.75rem;
   }
 }
-
 .\[\&_footer\]\:mt-auto footer {
   margin-top: auto;
 }
-
 .\[\&_footer\]\:w-full footer {
   width: 100%;
 }
-
 .\[\&_header\]\:w-full header {
   width: 100%;
 }
-
 .\[\&_main\]\:w-full main {
   width: 100%;
 }
