@@ -11,9 +11,13 @@
 		{%- endif %}
 	{%- endif %}
 
-	{% include meta.html %}
+	{%- include meta.html %}
 
-	{% include schema.html %}
+	{%- include gtm_head.html %}
+
+	{%- include ga.html %}
+
+	{%- include schema.html %}
 
 	<!-- Preload -->
 	<link rel="preload" as="style" href="{{ '/assets/css/font.css' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}" />
@@ -41,6 +45,7 @@
 	{%- endcomment %}
 </head>
 <body class="max-lg:fixed max-lg:w-screen max-lg:h-screen max-lg:overflow-hidden">
+	{%- include gtm_body.html %}
 	<div class="max-lg:h-screen max-lg:overflow-hidden">
 		<div class="h-screen max-lg:overflow-auto max-lg:pb-[6.7rem]" id="viewport">
 			<div class="flex flex-col items-center min-h-full max-lg:overflow-x-hidden [&_header]:w-full [&_main]:w-full [&_footer]:w-full [&_footer]:mt-auto">
@@ -243,8 +248,6 @@
 	<script src="{{ '/assets/js/search.min.js' | relative_url }}"></script>
 	{%- endif %}
 	<script src="{{ '/assets/js/main.js' | relative_url }}{% if site.version %}?v={{ site.version }}{% endif %}"></script>
-
-	{%- include google_tag_manager.html %}
 </slot>
 
 			</div>

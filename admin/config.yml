@@ -148,4 +148,5 @@ collections:
         identifier_field: name
         file: "_data/config/statistic.yml"
         fields:
-          - {label: "Google Tag Manager", name: "google_tag_manager", widget: "string", required: false}
+          - {label: "Google Tag Manager", name: "gtm", widget: "string", required: false}
+          - {label: "Google Analytics", name: "ga", widget: "string", required: false}
