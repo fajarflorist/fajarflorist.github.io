@@ -3,7 +3,7 @@ layout: product
 published: true
 title: "Anniversary #1"
 price:
-  regular: 1
+  regular: 0
 stock: Stok Ada
 attribute: Tanpa Atribut
 category: Anniversary
