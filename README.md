@@ -85,7 +85,7 @@ https://api.netlify.com/auth/done
 
 3. Drag any file with index.html inside a folder
 
-4. After succeed, go to `Settings`, and copy your site name. It should be something like `chipper-entremet-afb4ad`
+4. After succeed, go to `Settings`, and copy your site name. It should be something like `relaxed-blancmange-bf2a4b`
 
 5. Then go to `Domain Management` and add your GitHub Pages domain (your.github.io) as a custom domain
 

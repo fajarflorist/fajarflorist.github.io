@@ -2,7 +2,7 @@ backend:
   name: github
   repo: fajarflorist/fajarflorist.github.io
   branch: main
-  site_domain: chipper-entremet-afb4ad.netlify.app
+  site_domain: precious-llama-5abcbb.netlify.app
 
 local_backend:
   url: http://localhost:8081/api/v1
