@@ -3,7 +3,7 @@ layout: product
 published: true
 title: "Pernikahan #3"
 price:
-  regular: 675000
+  regular: 0
 stock: Stok Ada
 attribute: Tanpa Atribut
 category: Pernikahan
