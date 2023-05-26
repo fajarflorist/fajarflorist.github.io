@@ -3,7 +3,7 @@ layout: product
 published: true
 title: "Lekas Sembuh #1"
 price:
-  regular: 340000
+  regular: 0
 stock: Stok Ada
 attribute: Tanpa Atribut
 category: Lekas Sembuh
