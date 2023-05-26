@@ -233,9 +233,11 @@
 						price('.currency')
 						searchCounter(counter)
 						document.querySelector(counter).classList.remove('hidden')
-						if ( parseInt(document.querySelector('.product-price .currency').innerText) <= 0 ) {
-							document.querySelector('.product-price').classList.add('hidden')
-						}
+						document.querySelectorAll('.product-price').forEach(item => {
+							if ( parseInt(item.querySelector('.currency').innerText) <= 0 ) {
+								item.classList.add('hidden')
+							}
+						})
 					},500)
 				})
 			}
