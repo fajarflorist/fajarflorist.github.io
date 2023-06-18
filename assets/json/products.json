@@ -1,65 +1,76 @@
 ---
 layout: none
 ---
+{%- assign n = 0 -%}
+{%- for page in site.posts %}
+  {%- if page.layout != 'product' %}
+    {%- continue %}
+  {%- endif %}
+  {%- assign n = n | plus: 1 -%}
+{%- endfor %}
+
+{%- assign i = 0 -%}
 [
   {%- for page in site.posts %}
-    {%- if page.layout != 'product' %}
-      {%- continue %}
+  {%- if page.layout != 'product' %}
+    {%- continue %}
+  {%- endif %}
+  {
+    "title"           : "{{ page.title | escape }}",
+    {%- if page.thumbnail %}
+    "thumbnail"       : "{{ page.thumbnail }}",
     {%- endif %}
-    {
-      "title"           : "{{ page.title | escape }}",
-      {%- if page.thumbnail %}
-      "thumbnail"       : "{{ page.thumbnail }}",
-      {%- endif %}
-      {%- if page.price %}
-        {%- if page.price.promo %}
-      "priceHide"       : "",
-          {%- if page.price.promo != "" %}
-            {%- assign regular = page.price.regular | remove: "." %}
-            {%- assign promo = page.price.promo | remove: "." %}
-            {%- assign price_promo = promo %}
-      "priceCurrent"    : "{{ price_promo }}",
-            {%- assign price_regular = regular %}
-      "pricePast"       : "{{ price_regular }}",
-            {%- assign float_regular = regular | times: 1.0 %}
-            {%- assign float_promo = promo | times: 1.0 %}
-            {%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
-            {%- assign decimal_split = decimal | split: '.' %}
-            {%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
-            {%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
-            {%- if decimal_split[1] == "0" %}
-              {%- assign discount = fix_decimal_split %}
-            {%- else %}
-              {%- if decimal_split[1].size <= 2 %}
-                {%- assign discount = fix_decimal %}
-              {%- else %}
-                {%- assign discount = fix_decimal | round: 2 %}
-              {%- endif %}
-            {%- endif %}
-      "priceDiscount"   : "{{ discount }}",
-          {%- endif %}
-        {%- else %}
+    {%- if page.price %}
+      {%- if page.price.promo %}
+    "priceHide"       : "",
+        {%- if page.price.promo != "" %}
           {%- assign regular = page.price.regular | remove: "." %}
+          {%- assign promo = page.price.promo | remove: "." %}
+          {%- assign price_promo = promo %}
+    "priceCurrent"    : "{{ price_promo }}",
           {%- assign price_regular = regular %}
-      "priceHide"       : "!hidden",
-      "priceCurrent"    : "{{ price_regular }}",
+    "pricePast"       : "{{ price_regular }}",
+          {%- assign float_regular = regular | times: 1.0 %}
+          {%- assign float_promo = promo | times: 1.0 %}
+          {%- assign decimal = float_promo | divided_by: float_regular | times: 100 %}
+          {%- assign decimal_split = decimal | split: '.' %}
+          {%- assign fix_decimal = decimal | minus: 100 | remove: "-" %}
+          {%- assign fix_decimal_split = decimal_split[0] | minus: 100 | remove: "-" %}
+          {%- if decimal_split[1] == "0" %}
+            {%- assign discount = fix_decimal_split %}
+          {%- else %}
+            {%- if decimal_split[1].size <= 2 %}
+              {%- assign discount = fix_decimal %}
+            {%- else %}
+              {%- assign discount = fix_decimal | round: 2 %}
+            {%- endif %}
+          {%- endif %}
+    "priceDiscount"   : "{{ discount }}",
         {%- endif %}
-      {%- endif %}
-      {%- if page.stock == "Stok Habis" %}
-      "stock"           : "grayscale",
       {%- else %}
-      "stock"           : "",
+        {%- assign regular = page.price.regular | remove: "." %}
+        {%- assign price_regular = regular %}
+    "priceHide"       : "!hidden",
+    "priceCurrent"    : "{{ price_regular }}",
       {%- endif %}
-      {%- if page.attribute == "Tanpa Atribut" %}
-      "attributeHide"   : "!hidden",
-      {%- else %}
-      "attributeHide"   : "",
-      "attribute"       : "{{ page.attribute }}",
-      {%- endif %}
-      "category"        : "{{ page.category }}",
-      "tags"            : "{{ page.tags | join: ', ' }}",
-      "url"             : "{{ page.url }}",
-      "date"            : "{{ page.date }}"
-    } {%- unless forloop.last %},{%- endunless %}
+    {%- endif %}
+    {%- if page.stock == "Stok Habis" %}
+    "stock"           : "grayscale",
+    {%- else %}
+    "stock"           : "",
+    {%- endif %}
+    {%- if page.attribute == "Tanpa Atribut" %}
+    "attributeHide"   : "!hidden",
+    {%- else %}
+    "attributeHide"   : "",
+    "attribute"       : "{{ page.attribute }}",
+    {%- endif %}
+    "category"        : "{{ page.category }}",
+    "tags"            : "{{ page.tags | join: ', ' }}",
+    "url"             : "{{ page.url }}",
+    "date"            : "{{ page.date }}"
+  }
+  {%- assign i = i | plus: 1 -%}
+  {% if i == n %}{% else %},{% endif %}
   {%- endfor %}
 ]
